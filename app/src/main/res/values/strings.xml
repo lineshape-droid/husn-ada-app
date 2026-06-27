@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حسن ادا کورس</string>
+    <string name="app_name_en">Husn Ada Course</string>
+    <string name="loading">لوڈ ہو رہا ہے...</string>
+    <string name="offline_msg">آفلائن موڈ — لوکل ورژن</string>
+</resources>

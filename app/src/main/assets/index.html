@@ -1,0 +1,2521 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حسن ادا کورس — البیان التجوید</title>
+<meta name="app-version" content="1.0.0">
+<meta name="description" content="حسن ادا — قرآن کریم کی خوبصورت تلاوت کا مکمل کورس">
+<meta name="theme-color" content="#c8f000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="حسن ادا">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── Jameel Noori Nastaleeq Kasheeda — primary Urdu font ── */
+@font-face {
+  font-family: 'JameelNoori';
+  src: url('https://drive.google.com/uc?export=download&id=1AciAbjMUY9CC3YkZZx6m1z4-Xprk9eQM') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
+/* ── TOKENS ── */
+:root {
+  --bg:      #FFF9F2;
+  --white:   #FFFFFF;
+  --text:    #3D2B5C;
+  --muted:   #7B5EA7;
+  --border:  rgba(163,137,224,.22);
+
+  --pk:  #FFB3C6; --pk2: #FF85A1; --pkL: #FFF0F4;
+  --lv:  #C9B8FF; --lv2: #A389E0; --lvL: #F4F0FF;
+  --mn:  #B5EAD7; --mn2: #7DCFB6; --mnL: #EDFFF7;
+  --pc:  #FFDAB9; --pc2: #FFAD7D; --pcL: #FFF7EF;
+  --sk:  #AEE4FF; --sk2: #72C5F5; --skL: #EEF9FF;
+  --yw:  #FFF3A3; --yw2: #FFE066; --ywL: #FFFCE8;
+  --co:  #FFB5A7; --li:  #E5C1F5;
+
+  --r28: 28px; --r20: 20px; --r14: 14px;
+  --sh:  0 4px 22px rgba(163,137,224,.15);
+  --sh2: 0 8px 36px rgba(163,137,224,.2);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── FORCE WESTERN/ENGLISH NUMERALS ── */
+@font-face {
+  font-family: 'EnglishNums';
+  src: local('Arial'), local('Helvetica Neue'), local('sans-serif');
+  unicode-range: U+0030-0039;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'EnglishNums', 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+  color: var(--text);
+  line-height: 2.6;
+  font-size: 17px;
+  min-height: 100vh;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; font-size: 13px; }
+  .no-print { display: none; }
+  .bab-card { break-inside: avoid; }
+}
+
+/* ══════════════════════════════════════════
+   COVER PAGE
+══════════════════════════════════════════ */
+.cover {
+  background: linear-gradient(145deg, #E8DEFF 0%, #FFD6E8 35%, #C8F5E0 65%, #D6EEFF 100%);
+  text-align: center;
+  padding: 70px 30px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,179,198,.35) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(201,184,255,.35) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(181,234,215,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cover-deco {
+  font-size: 3.5rem;
+  letter-spacing: 8px;
+  margin-bottom: 28px;
+  display: block;
+  position: relative;
+  font-size: unset;
+  letter-spacing: unset;
+}
+.cover h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #3D1A6B;
+  text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(163,137,224,.3);
+  margin-bottom: 10px;
+  line-height: 1.8;
+  position: relative;
+}
+.cover .author {
+  font-size: 1.05rem;
+  color: var(--lv2);
+  margin-top: 16px;
+  font-weight: 600;
+}
+.cover-line {
+  width: 80px; height: 4px;
+  background: linear-gradient(90deg, var(--pk2), var(--lv2), var(--mn2));
+  border-radius: 50px;
+  margin: 22px auto;
+}
+
+/* ── PAGE WRAPPER ── */
+.page { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ══════════════════════════════════════════
+   SECTION DIVIDER
+══════════════════════════════════════════ */
+.sdiv {
+  display: flex; align-items: center; gap: 14px;
+  margin: 50px 0 30px;
+}
+.sdiv-line { flex: 1; height: 2px; background: var(--border); border-radius: 2px; }
+.sdiv-text {
+  font-size: .78rem; font-weight: 700; color: var(--muted);
+  letter-spacing: 1px; white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════
+   MUQADDAMA — INTRO BOX
+══════════════════════════════════════════ */
+.muqaddama {
+  background: linear-gradient(135deg, var(--lvL), var(--pkL));
+  border-radius: var(--r28);
+  padding: 40px 38px;
+  margin: 36px 0;
+  border: 2px solid rgba(163,137,224,.25);
+  box-shadow: var(--sh2);
+  position: relative;
+  overflow: hidden;
+}
+.muqaddama::before {
+  content: '📖';
+  position: absolute; top: 20px; left: 24px;
+  font-size: 3rem; opacity: .12;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+}
+.muqaddama-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--lv2), var(--pk2));
+  color: #fff; font-size: .82rem; font-weight: 700;
+  padding: 5px 18px; border-radius: 50px;
+  margin-bottom: 20px; box-shadow: var(--sh);
+}
+.muqaddama h2 {
+  font-size: 1.5rem; color: var(--lv2);
+  margin-bottom: 14px;
+  border-bottom: 2px dashed rgba(163,137,224,.3);
+  padding-bottom: 12px;
+}
+.muqaddama p {
+  font-size: .97rem; color: var(--text);
+  margin-bottom: 14px; line-height: 2.5;
+}
+.muqaddama p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════
+   FIHRIST — TABLE OF CONTENTS
+══════════════════════════════════════════ */
+.fihrist {
+  background: var(--white);
+  border-radius: var(--r28);
+  padding: 36px 34px;
+  margin: 36px 0;
+  box-shadow: var(--sh2);
+  border: 2px solid var(--border);
+}
+.fihrist-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 26px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid var(--border);
+}
+.fihrist-head .fh-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--lv), var(--pk));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+  box-shadow: var(--sh);
+}
+.fihrist-head h2 { font-size: 1.4rem; color: var(--text); }
+
+.fih-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.fih-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--r14);
+  transition: background .2s;
+  border: 2px solid transparent;
+}
+.fih-item:hover { background: var(--lvL); border-color: var(--lv); }
+a.fih-item {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+}
+a.fih-item:hover { background: var(--lvL); border-color: var(--lv); }
+.fih-num {
+  min-width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .82rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  line-height: 1;
+}
+.fih-body { flex: 1; }
+.fih-title { font-size: 1rem; font-weight: 700; color: var(--text); line-height: 2; }
+.fih-sub { font-size: .84rem; color: var(--muted); line-height: 2; }
+.fih-pg {
+  font-size: .75rem; font-weight: 700;
+  padding: 3px 12px; border-radius: 50px;
+  background: var(--yw); color: #5a3000;
+  white-space: nowrap; align-self: flex-start; margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* fihrist item color variants */
+.fn1 .fih-num { background: linear-gradient(135deg,#FF85A1,#FFB3C6); }
+.fn2 .fih-num { background: linear-gradient(135deg,#7DCFB6,#B5EAD7); }
+.fn3 .fih-num { background: linear-gradient(135deg,#A389E0,#C9B8FF); }
+.fn4 .fih-num { background: linear-gradient(135deg,#FFE066,#FFAD7D); }
+.fn5 .fih-num { background: linear-gradient(135deg,#72C5F5,#AEE4FF); }
+.fn6 .fih-num { background: linear-gradient(135deg,#FFB5A7,#E5C1F5); }
+.fn7 .fih-num { background: linear-gradient(135deg,#7DCFB6,#72C5F5); }
+.fn8 .fih-num { background: linear-gradient(135deg,#FFE066,#7DCFB6); }
+.fn9 .fih-num { background: linear-gradient(135deg,#FF85A1,#A389E0); }
+.fn10 .fih-num { background: linear-gradient(135deg,#72C5F5,#A389E0); }
+.fn11 .fih-num { background: linear-gradient(135deg,#7DCFB6,#FFE066); }
+.fn12 .fih-num { background: linear-gradient(135deg,#FFB5A7,#FF85A1); }
+.fn13 .fih-num { background: linear-gradient(135deg,#C9B8FF,#7DCFB6); }
+
+/* ══════════════════════════════════════════
+   BAB (CHAPTER) CARD
+══════════════════════════════════════════ */
+.bab-card {
+  border-radius: var(--r28);
+  margin: 44px 0;
+  overflow: hidden;
+  box-shadow: var(--sh2);
+  border: 2px solid transparent;
+}
+
+/* coloured chapter header banner */
+.bab-banner {
+  padding: 32px 36px 28px;
+  position: relative; overflow: hidden;
+}
+.bab-banner::after {
+  content: '';
+  position: absolute; left: -20px; bottom: -30px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  pointer-events: none;
+}
+.bab-banner::before {
+  content: '';
+  position: absolute; right: 10px; top: -20px;
+  width: 90px; height: 90px; border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  pointer-events: none;
+}
+.bab-num {
+  display: inline-block;
+  background: rgba(255,255,255,.4);
+  color: rgba(61,27,107,.85);
+  font-size: .78rem; font-weight: 700;
+  padding: 4px 16px; border-radius: 50px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.bab-banner h2 {
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  color: #2d1a4a;
+  line-height: 1.9;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.6);
+  margin-bottom: 6px;
+}
+.bab-banner .bab-sub {
+  font-size: .9rem;
+  color: rgba(61,27,107,.75);
+  line-height: 2;
+}
+
+/* white content body */
+.bab-body {
+  background: var(--white);
+  padding: 34px 36px 38px;
+}
+
+/* chapter banner gradients */
+.b1 .bab-banner { background: linear-gradient(135deg,#FFCCD8,#FFE0EC,#FFD6E4); border-color: #FFB3C6; }
+.b2 .bab-banner { background: linear-gradient(135deg,#B8EDD5,#D0F5E8,#C0F0DC); border-color: #B5EAD7; }
+.b3 .bab-banner { background: linear-gradient(135deg,#CCC0FF,#E0D8FF,#D4C8FF); border-color: #C9B8FF; }
+.b4 .bab-banner { background: linear-gradient(135deg,#FFE880,#FFF5B0,#FFEC90); border-color: #FFE066; }
+.b5 .bab-banner { background: linear-gradient(135deg,#A8DCFF,#CCF0FF,#B8E6FF); border-color: #AEE4FF; }
+.b6 .bab-banner { background: linear-gradient(135deg,#FFCCC0,#FFE0D8,#FFD4CC); border-color: #FFB5A7; }
+.b7 .bab-banner { background: linear-gradient(135deg,#B8F5CC,#D0FFE0,#C4FAD4); border-color: #B5EAD7; }
+.b8 .bab-banner { background: linear-gradient(135deg,#FFE888,#FFF4B0,#FFED98); border-color: #FFF3A3; }
+.b9 .bab-banner { background: linear-gradient(135deg,#F0C0FF,#F8D8FF,#F4CCFF); border-color: #E5C1F5; }
+.b10 .bab-banner { background: linear-gradient(135deg,#A8D8FF,#C8ECFF,#B8E2FF); border-color: #AEE4FF; }
+.b11 .bab-banner { background: linear-gradient(135deg,#C0F0D8,#D8FAE8,#CCF5E0); border-color: #B5EAD7; }
+.b12 .bab-banner { background: linear-gradient(135deg,#FFBCC0,#FFD4D8,#FFC8CC); border-color: #FFB3C6; }
+.b13 .bab-banner { background: linear-gradient(135deg,#D0C8FF,#E4DCFF,#D8D0FF); border-color: #C9B8FF; }
+
+/* bab card border color matches banner */
+.b1  { border-color: #FFB3C6; }
+.b2  { border-color: #B5EAD7; }
+.b3  { border-color: #C9B8FF; }
+.b4  { border-color: #FFE066; }
+.b5  { border-color: #AEE4FF; }
+.b6  { border-color: #FFB5A7; }
+.b7  { border-color: #B5EAD7; }
+.b8  { border-color: #FFF3A3; }
+.b9  { border-color: #E5C1F5; }
+.b10 { border-color: #AEE4FF; }
+.b11 { border-color: #B5EAD7; }
+.b12 { border-color: #FFB3C6; }
+.b13 { border-color: #C9B8FF; }
+
+/* ── SECTION INSIDE BAB ── */
+.sec {
+  margin-bottom: 28px;
+}
+.sec:last-child { margin-bottom: 0; }
+
+.sec-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed var(--border);
+}
+.sec-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; flex-shrink: 0;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+  box-shadow: 0 2px 8px rgba(163,137,224,.2);
+}
+.sec-head h3 {
+  font-size: 1.08rem; font-weight: 700; color: var(--text);
+  line-height: 2;
+}
+
+.sec p {
+  font-size: .95rem; color: var(--text);
+  line-height: 2.6; margin-bottom: 10px;
+}
+.sec p:last-child { margin-bottom: 0; }
+
+/* ── AYAH / HADITH BLOCK ── */
+.ayah-block {
+  background: linear-gradient(135deg, #F4F0FF, #EDE0FF);
+  border-radius: var(--r20);
+  padding: 22px 24px;
+  margin: 16px 0;
+  border: 2px solid rgba(163,137,224,.3);
+  text-align: center;
+  box-shadow: 0 3px 14px rgba(163,137,224,.15);
+}
+.ayah-ar {
+  font-size: 1.35rem; color: #3D1A6B;
+  line-height: 3; margin-bottom: 6px;
+  direction: rtl;
+  font-family: 'Amiri', serif;
+}
+.ayah-ref {
+  font-size: .78rem; color: var(--muted); font-weight: 700;
+  background: rgba(163,137,224,.15);
+  display: inline-block; padding: 3px 14px; border-radius: 50px;
+  margin-bottom: 8px;
+}
+.ayah-tr {
+  font-size: .9rem; color: var(--muted);
+  font-style: italic; line-height: 2.2;
+}
+
+.hadith-block {
+  background: linear-gradient(135deg, #FFFDE8, #FFF8C0);
+  border-radius: var(--r20);
+  padding: 20px 24px;
+  margin: 16px 0;
+  border: 2px solid rgba(255,224,102,.5);
+  box-shadow: 0 3px 14px rgba(255,200,0,.1);
+}
+.hadith-block .had-text {
+  font-size: 1.1rem; color: #3D1A6B;
+  line-height: 2.8; text-align: center; margin-bottom: 6px;
+  font-family: 'Amiri', serif;
+}
+.hadith-block .had-ref {
+  font-size: .78rem; color: #7a5000; font-weight: 700;
+  background: rgba(255,224,102,.4);
+  display: inline-block; padding: 3px 14px; border-radius: 50px;
+  text-align: center; display: block; width: fit-content; margin: 0 auto;
+}
+.hadith-block .had-tr {
+  font-size: .88rem; color: #5a3000;
+  line-height: 2.2; text-align: center; margin-top: 8px;
+}
+
+/* ── POINT LIST ── */
+.pt-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 9px;
+  margin-top: 6px;
+}
+.pt-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 13px 16px;
+  font-size: .93rem; line-height: 2.2;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  transition: border-color .2s, background .2s;
+}
+.pt-list li:hover { background: var(--lvL); border-color: var(--lv); }
+.pt-list li .pi {
+  font-size: 1.05rem; flex-shrink: 0; margin-top: 3px;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+  line-height: 1;
+}
+
+/* colour-coded lists */
+.list-ok li  { background: var(--mnL); border-color: rgba(125,207,182,.35); }
+.list-ok li:hover { background: #d0fff0; border-color: var(--mn2); }
+.list-no li  { background: #FFF4F6; border-color: rgba(255,133,161,.3); }
+.list-no li:hover { background: #FFE8EE; border-color: var(--pk2); }
+.list-steps li { background: var(--skL); border-color: rgba(114,197,245,.3); }
+.list-steps li:hover { background: #DCF3FF; border-color: var(--sk2); }
+.list-warn li  { background: var(--ywL); border-color: rgba(255,224,102,.4); }
+.list-warn li:hover { background: #FFFBD0; border-color: var(--yw2); }
+.list-key li { background: var(--lvL); border-color: rgba(163,137,224,.3); }
+.list-key li:hover { background: #EAE4FF; border-color: var(--lv2); }
+
+/* ── STEP NUMBER ── */
+.step-num {
+  min-width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--lv2), var(--pk2));
+  line-height: 1;
+}
+
+/* ── NUMBERED SECTION LABEL ── */
+.num-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .82rem; font-weight: 700;
+  padding: 5px 16px; border-radius: 50px;
+  margin-bottom: 10px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(163,137,224,.2);
+}
+.nl-pink { background: linear-gradient(135deg, var(--pk2), #FF6B8A); }
+.nl-mint { background: linear-gradient(135deg, var(--mn2), var(--sk2)); }
+.nl-lav  { background: linear-gradient(135deg, var(--lv2), var(--pk2)); }
+.nl-yw   { background: linear-gradient(135deg, var(--yw2), var(--pc2)); color:#5a2000; }
+.nl-sky  { background: linear-gradient(135deg, var(--sk2), var(--lv2)); }
+.nl-coral{ background: linear-gradient(135deg, var(--co), var(--pk2)); }
+
+/* ── INFO BOX ── */
+.info-box {
+  border-radius: var(--r20);
+  padding: 20px 24px;
+  margin: 14px 0;
+  font-size: .93rem; line-height: 2.5;
+}
+.ib-lav { background: var(--lvL); border-right: 5px solid var(--lv2); }
+.ib-mint { background: var(--mnL); border-right: 5px solid var(--mn2); }
+.ib-yw { background: var(--ywL); border-right: 5px solid var(--yw2); }
+.ib-pk { background: var(--pkL); border-right: 5px solid var(--pk2); }
+.ib-sk { background: var(--skL); border-right: 5px solid var(--sk2); }
+
+/* ── MD TABLE ── */
+.md-table {
+  display: flex; flex-direction: column; gap: 8px; margin-top: 8px;
+}
+.mdt-row {
+  display: flex; gap: 12px; align-items: stretch;
+}
+.mdt-label {
+  min-width: 110px; background: linear-gradient(135deg, var(--lv), var(--pk));
+  color: #3D1A6B; font-weight: 700; font-size: .85rem;
+  padding: 10px 14px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; line-height: 1.8;
+}
+.mdt-val {
+  flex: 1; background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 10px 14px;
+  font-size: .9rem; line-height: 2.2; color: var(--text);
+  display: flex; align-items: center;
+}
+
+/* ── KHALASA (SUMMARY) ── */
+.khalasa {
+  background: linear-gradient(135deg, var(--lvL), var(--pkL));
+  border-radius: var(--r20);
+  padding: 22px 26px;
+  margin-top: 22px;
+  border: 2px solid rgba(163,137,224,.3);
+}
+.khalasa-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--lv2), var(--pk2));
+  color: #fff; font-size: .78rem; font-weight: 700;
+  padding: 4px 16px; border-radius: 50px;
+  margin-bottom: 12px; box-shadow: var(--sh);
+}
+.khalasa p {
+  font-size: .93rem; color: var(--text);
+  line-height: 2.6;
+}
+
+/* ── GOLDEN RULE CLOSING CARD ── */
+.golden {
+  background: linear-gradient(135deg, #FFE864, #FFCB40, #FFAD7D);
+  border-radius: var(--r28);
+  padding: 50px 36px;
+  text-align: center;
+  margin: 50px 0 20px;
+  box-shadow: 0 10px 40px rgba(255,180,0,.25);
+  position: relative; overflow: hidden;
+}
+.golden::before {
+  content: '✨';
+  position: absolute; top: 18px; right: 24px;
+  font-size: 2.5rem; opacity: .3;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+}
+.golden::after {
+  content: '✨';
+  position: absolute; bottom: 18px; left: 24px;
+  font-size: 2rem; opacity: .3;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+}
+.golden-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.4);
+  color: #5a2000; font-size: .82rem; font-weight: 700;
+  padding: 5px 20px; border-radius: 50px;
+  margin-bottom: 22px; backdrop-filter: blur(4px);
+}
+.golden h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #2d1000;
+  line-height: 2.2;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.5);
+}
+.golden-line {
+  width: 60px; height: 3px;
+  background: rgba(255,255,255,.6);
+  border-radius: 50px;
+  margin: 18px auto;
+}
+
+/* ── UTILITY ── */
+.mt8  { margin-top: 8px; }
+.mt14 { margin-top: 14px; }
+.mt20 { margin-top: 20px; }
+.mb8  { margin-bottom: 8px; }
+
+/* ── SCROLL TO TOP ── */
+.to-top {
+  position: fixed; bottom: 28px; left: 28px;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--lv2), var(--pk2));
+  color: #fff; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(163,137,224,.4);
+  cursor: pointer; border: none;
+  text-decoration: none;
+  transition: transform .25s, box-shadow .25s;
+  z-index: 100;
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
+  line-height: 1;
+}
+.to-top:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(163,137,224,.5); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .bab-body { padding: 22px 20px 26px; }
+  .bab-banner { padding: 24px 22px 20px; }
+  .muqaddama { padding: 28px 22px; }
+  .fihrist { padding: 26px 20px; }
+  .mdt-row { flex-direction: column; }
+  .mdt-label { min-width: unset; }
+  .cover { padding: 50px 20px 40px; }
+  .golden { padding: 36px 22px; }
+}
+
+/* ══════════════════════════════════════════
+   ANDROID PWA — SAFE AREA & BASE TOUCH
+══════════════════════════════════════════ */
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+  --nb-h: 58px;
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+  padding-top: var(--nb-h);
+}
+* { -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; }
+
+/* ══════════════════════════════════════════
+   STICKY NAVBAR
+══════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,249,242,.92);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1.5px solid rgba(163,137,224,.2);
+  box-shadow: 0 2px 18px rgba(163,137,224,.15);
+  transition: box-shadow .3s;
+  padding-top: var(--safe-top);
+}
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(163,137,224,.25); }
+.nb-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--nb-h); padding: 0 18px;
+  max-width: 900px; margin: 0 auto;
+}
+.nb-brand {
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.nb-logo {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg,var(--lv2),var(--pk2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; box-shadow: 0 2px 8px rgba(163,137,224,.3);
+  font-family: 'Apple Color Emoji','Segoe UI Emoji',sans-serif; line-height:1;
+}
+.nb-title {
+  font-size: 1.05rem; font-weight: 700; color: var(--text);
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+}
+
+/* hamburger */
+.nb-menu-btn {
+  width: 40px; height: 40px; border-radius: 10px; border: none;
+  background: transparent; cursor: pointer; padding: 8px 7px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .2s;
+}
+.nb-menu-btn:hover, .nb-menu-btn:active { background: var(--lvL); }
+.nb-menu-btn span {
+  display: block; height: 2.5px; border-radius: 2px;
+  background: var(--lv2);
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  transform-origin: center;
+}
+.nb-menu-btn.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.nb-menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nb-menu-btn.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+.nb-spacer { height: 0; }
+
+/* drawer */
+.nb-drawer {
+  position: fixed; top: 0; right: -100%; bottom: 0;
+  width: min(320px, 85vw);
+  background: var(--white);
+  box-shadow: -6px 0 40px rgba(163,137,224,.25);
+  transition: right .35s cubic-bezier(.34,1.56,.64,1);
+  z-index: 1001; overflow-y: auto;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  -webkit-overflow-scrolling: touch;
+}
+.nb-drawer.open { right: 0; }
+.nb-drawer-inner { padding: 0 0 32px; }
+.nb-drawer-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; border-bottom: 2px solid var(--border);
+  font-size: 1rem; font-weight: 700; color: var(--lv2);
+  position: sticky; top: 0; background: var(--white); z-index: 2;
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+}
+.nb-close {
+  width: 32px; height: 32px; border-radius: 8px; border: none;
+  background: var(--lvL); color: var(--lv2); cursor: pointer;
+  font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.nb-link {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px; text-decoration: none; color: var(--text);
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+  font-size: .92rem; line-height: 1.9;
+  border-bottom: 1px solid rgba(163,137,224,.1);
+  transition: all .2s; border-right: 4px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.nb-link:hover, .nb-link:active { background: var(--lvL); }
+.nb-lnum {
+  min-width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  line-height: 1;
+}
+/* navbar link colours */
+.nb-c1  .nb-lnum,.nb-c1:active  .nb-lnum { background:linear-gradient(135deg,#FF85A1,#FFB3C6); }
+.nb-c2  .nb-lnum { background:linear-gradient(135deg,#7DCFB6,#B5EAD7); }
+.nb-c3  .nb-lnum { background:linear-gradient(135deg,#A389E0,#C9B8FF); }
+.nb-c4  .nb-lnum { background:linear-gradient(135deg,#FFE066,#FFAD7D); }
+.nb-c5  .nb-lnum { background:linear-gradient(135deg,#72C5F5,#AEE4FF); }
+.nb-c6  .nb-lnum { background:linear-gradient(135deg,#FFB5A7,#E5C1F5); }
+.nb-c7  .nb-lnum { background:linear-gradient(135deg,#7DCFB6,#72C5F5); }
+.nb-c8  .nb-lnum { background:linear-gradient(135deg,#FFE066,#7DCFB6); }
+.nb-c9  .nb-lnum { background:linear-gradient(135deg,#FF85A1,#A389E0); }
+.nb-c10 .nb-lnum { background:linear-gradient(135deg,#72C5F5,#A389E0); }
+.nb-c11 .nb-lnum { background:linear-gradient(135deg,#7DCFB6,#FFE066); }
+.nb-c12 .nb-lnum { background:linear-gradient(135deg,#FFB5A7,#FF85A1); }
+.nb-c13 .nb-lnum { background:linear-gradient(135deg,#C9B8FF,#7DCFB6); }
+
+.nb-overlay {
+  position: fixed; inset: 0; background: rgba(61,43,92,.45);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s; z-index: 1000;
+}
+.nb-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ── progress bar in navbar ── */
+.nb-progress {
+  height: 3px; background: transparent; width: 100%;
+}
+.nb-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg,var(--pk2),var(--lv2),var(--mn2));
+  width: 0%; transition: width .15s linear;
+}
+
+/* ══════════════════════════════════════════
+   COVER — NEW DESIGN
+══════════════════════════════════════════ */
+.cover-logo-ring {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 6px 24px rgba(163,137,224,.3),
+              0 0 0 8px rgba(255,255,255,.3),
+              0 0 0 16px rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+}
+.cover-logo-icon {
+  font-size: 2.8rem; line-height:1; display:block; text-align:center;
+  font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;
+}
+.cover-tagline {
+  font-size: .92rem; color: #6B4FA0; margin-bottom: 4px; opacity: .85;
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+}
+
+
+/* ══════════════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════════════ */
+.anim-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s cubic-bezier(.25,.46,.45,.94),
+              transform .6s cubic-bezier(.25,.46,.45,.94);
+}
+.anim-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.anim-slide-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.anim-slide-right.visible { opacity:1; transform:translateX(0); }
+
+/* stagger children */
+.anim-fade:nth-child(2) { transition-delay: .08s; }
+.anim-fade:nth-child(3) { transition-delay: .14s; }
+.anim-fade:nth-child(4) { transition-delay: .20s; }
+.anim-fade:nth-child(5) { transition-delay: .26s; }
+
+/* bab card pop in */
+.bab-card {
+  opacity: 0;
+  transform: translateY(40px) scale(.98);
+  transition: opacity .65s cubic-bezier(.25,.46,.45,.94),
+              transform .65s cubic-bezier(.25,.46,.45,.94),
+              box-shadow .3s;
+}
+.bab-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ══════════════════════════════════════════
+   READABILITY IMPROVEMENTS
+══════════════════════════════════════════ */
+/* larger comfortable body text */
+.sec p { font-size: 1rem; line-height: 3.0; }
+.pt-list li { font-size: .97rem; line-height: 2.6; padding: 15px 18px; gap: 14px; }
+.info-box { font-size: .97rem; line-height: 3.0; padding: 22px 26px; }
+.hadith-block .had-text { font-size: 1.2rem; line-height: 3.2; }
+.ayah-ar { font-size: 1.5rem; line-height: 3.4; }
+.khalasa p { font-size: .97rem; line-height: 2.8; }
+.bab-body { padding: 36px 38px 42px; }
+
+/* minimum tap target for Android (44px) */
+.nb-link { min-height: 52px; }
+.fih-item { min-height: 52px; }
+.pt-list li { min-height: 44px; }
+.to-top { width: 52px; height: 52px; font-size: 1.4rem; bottom: calc(24px + var(--safe-bottom)); left: calc(18px + var(--safe-left)); }
+
+/* section icon bigger */
+.sec-icon { width: 44px; height: 44px; font-size: 1.25rem; border-radius: 14px; }
+.sec-head h3 { font-size: 1.12rem; }
+
+/* fihrist more spacious */
+.fih-item { padding: 16px 18px; gap: 16px; }
+.fih-title { font-size: 1.03rem; }
+.fih-sub { font-size: .87rem; }
+.fih-list { gap: 8px; }
+
+/* step number bigger */
+.step-num { min-width: 32px; height: 32px; font-size: .8rem; }
+
+/* mdt-val more readable */
+.mdt-val { font-size: .95rem; line-height: 2.4; padding: 12px 16px; }
+.mdt-label { font-size: .9rem; padding: 12px 16px; }
+
+/* better mobile spacing */
+@media(max-width:600px){
+  .page { padding: 0 14px 60px; }
+  .bab-body { padding: 24px 18px 28px; }
+  .bab-banner { padding: 26px 20px 22px; }
+  .muqaddama { padding: 28px 20px; }
+  .fihrist { padding: 24px 18px; }
+  .info-box { padding: 18px 20px; }
+  .sec p { font-size: .97rem; }
+  .nb-inner { padding: 0 14px; }
+  .pt-list { gap: 8px; }
+  .pt-list li { padding: 13px 14px; }
+  .mdt-row { flex-direction: column; }
+  .mdt-label { min-width: unset; width: 100%; }
+  .khalasa { padding: 20px 18px; }
+  .golden { padding: 40px 22px; }
+  .cover { padding: 50px 22px 44px; }
+}
+
+/* ── ACTIVE CHAPTER HIGHLIGHT ── */
+.bab-card.active-section {
+  box-shadow: 0 12px 48px rgba(163,137,224,.35);
+}
+
+/* ── SCROLL TO TOP enhanced ── */
+.to-top {
+  opacity: 0; pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity .3s, transform .3s, box-shadow .25s;
+}
+.to-top.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+/* ── GOLDEN RULE ── */
+.golden { padding-top: 56px; padding-bottom: 56px; }
+.golden-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.45); color: #5a2000;
+  font-size: .85rem; font-weight: 700;
+  padding: 6px 22px; border-radius: 50px;
+  margin-bottom: 24px; backdrop-filter: blur(4px);
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif;
+}
+
+/* ── PRINT ── */
+@media print {
+  .navbar, .nb-spacer, .to-top, .nb-overlay, .nb-drawer { display: none !important; }
+  body { padding-top: 0; }
+  .bab-card { opacity: 1 !important; transform: none !important; }
+  .anim-fade, .anim-slide-right { opacity: 1 !important; transform: none !important; }
+  .page { padding-bottom: 20px; }
+}
+
+/* ── REDUCE MOTION ── */
+@media(prefers-reduced-motion: reduce) {
+  .bab-card, .anim-fade, .anim-slide-right {
+    opacity: 1 !important; transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ── COVER LOGO IMAGE ── */
+.cover-logo-wrap {
+  margin: 0 auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-logo-img {
+  width: min(280px, 72vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 24px rgba(61,43,92,.18));
+  animation: logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── NAVBAR LOGO IMAGE ── */
+.nb-logo {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(163,137,224,.3);
+  overflow: hidden; flex-shrink: 0;
+  padding: 2px;
+}
+.nb-logo-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── REMOVE OLD RING (no longer needed) ── */
+.cover-logo-ring { display: none; }
+.cover-logo-icon { display: none; }
+
+
+/* ── Global Jameel Noori override for all Urdu text ── */
+body, p, h1, h2, h3, h4, h5, h6,
+.sec p, .sec-head h3, .bab-banner h2, .bab-banner .bab-sub,
+.bab-num, .pt-list li, .info-box, .khalasa p,
+.ayah-tr, .had-tr, .had-ref, .ayah-ref,
+.fih-title, .fih-sub, .nb-title, .nb-link,
+.nb-drawer-head span, .muqaddama p,
+.mdt-label, .mdt-val, .cover h1, .cover-tagline,
+.golden h2, .golden-tag, .num-label,
+.khalasa-tag, .muqaddama-tag, .sec-head h3 {
+  font-family: 'JameelNoori', 'Noto Nastaliq Urdu', serif !important;
+}
+
+/* Hadith & Ayah Arabic text stays on Amiri */
+.ayah-ar, .had-text {
+  font-family: 'Amiri', 'JameelNoori', serif !important;
+  font-size: 1.6rem;
+  line-height: 3.6;
+}
+
+
+/* ════════════════════════════════════════
+   SPLASH SCREEN
+════════════════════════════════════════ */
+#splashScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: linear-gradient(145deg, #E8DEFF 0%, #FFD6E8 40%, #C8F5E0 70%, #D6EEFF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#splashScreen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.splash-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 360px;
+}
+.splash-logo-wrap {
+  animation: splashPop .6s cubic-bezier(.34,1.56,.64,1) both;
+  animation-delay: .1s;
+}
+@keyframes splashPop {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+.splash-logo {
+  width: min(240px, 65vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(61,43,92,.2));
+}
+.splash-bar-wrap {
+  width: 200px;
+  height: 5px;
+  background: rgba(163,137,224,.2);
+  border-radius: 50px;
+  overflow: hidden;
+  animation: splashFadeIn .4s ease both;
+  animation-delay: .4s;
+}
+@keyframes splashFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.splash-bar {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--pk2), var(--lv2), var(--mn2));
+  width: 0%;
+  animation: splashProgress 2.6s cubic-bezier(.4,0,.2,1) forwards;
+  animation-delay: .5s;
+}
+@keyframes splashProgress {
+  0%   { width: 0%; }
+  60%  { width: 80%; }
+  85%  { width: 92%; }
+  100% { width: 100%; }
+}
+.splash-text {
+  font-family: 'JameelNoori','Noto Nastaliq Urdu',serif;
+  font-size: .95rem;
+  color: #7B5EA7;
+  animation: splashFadeIn .4s ease both;
+  animation-delay: .6s;
+  direction: rtl;
+}
+
+/* ── UPDATE TOAST ── */
+#updateToast {
+  position: fixed;
+  bottom: calc(80px + var(--safe-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #3D2B5C, #5a3e8b);
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 22px;
+  font-family: 'JameelNoori','Noto Nastaliq Urdu',serif;
+  font-size: .88rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 6px 28px rgba(61,43,92,.4);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s, transform .4s;
+  white-space: nowrap;
+  direction: rtl;
+}
+#updateToast.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+#updateToast button {
+  background: linear-gradient(135deg, var(--mn2), var(--sk2));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-family: 'JameelNoori','Noto Nastaliq Urdu',serif;
+  font-size: .82rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ SPLASH SCREEN ══ -->
+<div id="splashScreen">
+  <div class="splash-inner">
+    <div class="splash-logo-wrap">
+      <img src="Ayesh-Quran-Academy-LoGo.png" alt="Jil Quran Academy" class="splash-logo" />
+    </div>
+    <div class="splash-bar-wrap">
+      <div class="splash-bar" id="splashBar"></div>
+    </div>
+    <div class="splash-text">لوڈ ہو رہا ہے...</div>
+  </div>
+</div>
+
+<!-- ══ STICKY NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+  <div class="nb-inner">
+    <div class="nb-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <span class="nb-logo"><img src="https://drive.google.com/uc?export=view&id=17YPT5u9_SsNhiZfida2iyGlNbK21MsY4" alt="Logo" class="nb-logo-img" /></span>
+      <span class="nb-title">حسن ادا</span>
+    </div>
+    <button class="nb-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="مینو">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nb-drawer" id="nbDrawer">
+    <div class="nb-drawer-inner">
+      <div class="nb-drawer-head">
+        <span>ابواب کی فہرست</span>
+        <button onclick="toggleMenu()" class="nb-close">✕</button>
+      </div>
+      <a href="#bab-1"  class="nb-link nb-c1"  onclick="toggleMenu()"><span class="nb-lnum">1</span><span>حسنِ ادا کا تعارف</span></a>
+      <a href="#bab-2"  class="nb-link nb-c2"  onclick="toggleMenu()"><span class="nb-lnum">2</span><span>آدابِ تلاوت اور اصلاحِ نیت</span></a>
+      <a href="#bab-3"  class="nb-link nb-c3"  onclick="toggleMenu()"><span class="nb-lnum">3</span><span>تیاری صوت و لہجہ</span></a>
+      <a href="#bab-4"  class="nb-link nb-c4"  onclick="toggleMenu()"><span class="nb-lnum">4</span><span>مخارج و صفاتِ حروف</span></a>
+      <a href="#bab-5"  class="nb-link nb-c5"  onclick="toggleMenu()"><span class="nb-lnum">5</span><span>روانی تلاوت اور ادائیگی</span></a>
+      <a href="#bab-6"  class="nb-link nb-c6"  onclick="toggleMenu()"><span class="nb-lnum">6</span><span>تنفّس کی مشقیں</span></a>
+      <a href="#bab-7"  class="nb-link nb-c7"  onclick="toggleMenu()"><span class="nb-lnum">7</span><span>اصولِ وقف و ابتداء</span></a>
+      <a href="#bab-8"  class="nb-link nb-c8"  onclick="toggleMenu()"><span class="nb-lnum">8</span><span>فنِ مدّات</span></a>
+      <a href="#bab-9"  class="nb-link nb-c9"  onclick="toggleMenu()"><span class="nb-lnum">9</span><span>نغمگی تلاوت</span></a>
+      <a href="#bab-10" class="nb-link nb-c10" onclick="toggleMenu()"><span class="nb-lnum">10</span><span>تجویدی مہارت</span></a>
+      <a href="#bab-11" class="nb-link nb-c11" onclick="toggleMenu()"><span class="nb-lnum">11</span><span>تنوعِ لہجہ</span></a>
+      <a href="#bab-12" class="nb-link nb-c12" onclick="toggleMenu()"><span class="nb-lnum">12</span><span>تاثیرِ تلاوت</span></a>
+      <a href="#bab-13" class="nb-link nb-c13" onclick="toggleMenu()"><span class="nb-lnum">13</span><span>عملی مشقیں</span></a>
+    </div>
+  </div>
+  <div class="nb-overlay" id="nbOverlay" onclick="toggleMenu()"></div>
+  <div class="nb-progress"><div class="nb-progress-bar" id="nbProgress"></div></div>
+</nav>
+<div class="nb-spacer"></div>
+
+<!-- ══════════════════════════════════════════
+     COVER
+══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo-wrap">
+    <img src="https://drive.google.com/uc?export=view&id=17YPT5u9_SsNhiZfida2iyGlNbK21MsY4" alt="Ayesh Quran Academy Logo" class="cover-logo-img" />
+  </div>
+  <h1>حسن ادا کورس</h1>
+  <div class="cover-tagline">خوبصورت تلاوتِ قرآن کا مکمل کورس</div>
+  <div class="cover-line"></div>
+</div>
+
+<div class="page">
+
+<!-- ── MUQADDAMA ── -->
+<div class="muqaddama anim-fade">
+  <div class="muqaddama-tag">📌 مقدمہ</div>
+  <p>الحمدللہ رب العالمین، والصلوٰۃ والسلام علی سید الانبیاء والمرسلین۔</p>
+  <p>قرآن مجید اللہ تعالیٰ کا مقدس کلام ہے، جس کی تلاوت ایک عظیم عبادت ہے۔ ہر مسلمان کی خواہش ہوتی ہے کہ وہ قرآن کو خوبصورت، درست اور دلکش انداز میں پڑھ سکے۔</p>
+  <p>اس مقصد کے تحت یہ "حسن ادا" کورس تیار کیا گیا ہے، تاکہ تلاوت قرآن مجید کو تجوید کے اصولوں کے مطابق صحیح مخارج، واضح ادائیگی اور خوبصورت لہجے (اُتار، چڑھاؤ) کے ساتھ پڑھنا سکھایا جا سکے۔</p>
+  <p>اس کورس میں وقف، مد، غنہ اور دیگر تجویدی اصولوں کے ساتھ تلاوت میں حسن ادا پیدا کرنے کی عملی مشق کروائی جائے گی۔</p>
+  <p>اللہ تعالیٰ سے دعا ہے کہ وہ ہمیں قرآن مجید کو صحیح پڑھنے اور اُس پر عمل کرنے کی توفیق عطا فرمائے، آمین۔</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FIHRIST
+══════════════════════════════════════════ -->
+<div class="fihrist anim-fade">
+  <div class="fihrist-head">
+    <div class="fh-icon">📋</div>
+    <h2>فہرست</h2>
+  </div>
+  <ul class="fih-list">
+    <a href="#bab-1" class="fih-item fn1">
+      <div class="fih-num">1</div>
+      <div class="fih-body">
+        <div class="fih-title">تعارفِ حسن ادا</div>
+        <div class="fih-sub">قرآن کریم کو خوبصورت، مؤثر اور دلنشین انداز میں پڑھنے کی اہمیت۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 4</div>
+    </a>
+    <a href="#bab-2" class="fih-item fn2">
+      <div class="fih-num">2</div>
+      <div class="fih-body">
+        <div class="fih-title">آدابِ تلاوت اور اصلاحِ نیت</div>
+        <div class="fih-sub">تلاوت سے پہلے روحانی اور اخلاقی تیاری۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 6</div>
+    </a>
+    <a href="#bab-3" class="fih-item fn3">
+      <div class="fih-num">3</div>
+      <div class="fih-body">
+        <div class="fih-title">تیاری صوت و لہجہ</div>
+        <div class="fih-sub">آواز کو صاف، مضبوط اور پر اثر بنانے کے اصول۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 10</div>
+    </a>
+    <a href="#bab-4" class="fih-item fn4">
+      <div class="fih-num">4</div>
+      <div class="fih-body">
+        <div class="fih-title">مخارج و صفاتِ حروف</div>
+        <div class="fih-sub">حروف کی درست ادائیگی اور تلفظ کی اصلاح۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 13</div>
+    </a>
+    <a href="#bab-5" class="fih-item fn5">
+      <div class="fih-num">5</div>
+      <div class="fih-body">
+        <div class="fih-title">روانی تلاوت اور ادائیگی</div>
+        <div class="fih-sub">الفاظ کو رواں، واضح اور خوبصورت انداز میں ادا کرنا۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 16</div>
+    </a>
+    <a href="#bab-6" class="fih-item fn6">
+      <div class="fih-num">6</div>
+      <div class="fih-body">
+        <div class="fih-title">تنفّس کی مشقیں اور قوتِ سانس</div>
+        <div class="fih-sub">لمبی سانس، سانس کو قابو میں رکھنے اور مسلسل خوبصورت تلاوت کی تربیت۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 19</div>
+    </a>
+    <a href="#bab-7" class="fih-item fn7">
+      <div class="fih-num">7</div>
+      <div class="fih-body">
+        <div class="fih-title">اصولِ وقف و ابتداء</div>
+        <div class="fih-sub">وقف، وصل اور درست آغاز کے فنی و جمالیاتی اصول۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 22</div>
+    </a>
+    <a href="#bab-8" class="fih-item fn8">
+      <div class="fih-num">8</div>
+      <div class="fih-body">
+        <div class="fih-title">فنِ مدّات اور جمالِ ادائیگی</div>
+        <div class="fih-sub">مدود کی صحیح مقدار، نرمی اور خوبصورت تلاوت کے طریقے۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 26</div>
+    </a>
+    <a href="#bab-9" class="fih-item fn9">
+      <div class="fih-num">9</div>
+      <div class="fih-body">
+        <div class="fih-title">نغمگی تلاوت اور صوتی لطافت</div>
+        <div class="fih-sub">غنہ، ادغام، اخفاء اور صوتی اُتار چڑھاؤ کے ذریعے تلاوت میں دل کشی پیدا کرنا۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 29</div>
+    </a>
+    <a href="#bab-10" class="fih-item fn10">
+      <div class="fih-num">10</div>
+      <div class="fih-body">
+        <div class="fih-title">تجویدی مہارت اور صوتی ہم آہنگی</div>
+        <div class="fih-sub">تجوید کے قواعد کو خوبصورت انداز تلاوت کے ساتھ جوڑنا۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 32</div>
+    </a>
+    <a href="#bab-11" class="fih-item fn11">
+      <div class="fih-num">11</div>
+      <div class="fih-body">
+        <div class="fih-title">تنوع لہجہ اور صوتی انداز</div>
+        <div class="fih-sub">تلاوت کے دوران آواز کو مختلف انداز، کیفیت اور لہجوں میں پیش کرنے کی مہارت۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 35</div>
+    </a>
+    <a href="#bab-12" class="fih-item fn12">
+      <div class="fih-num">12</div>
+      <div class="fih-body">
+        <div class="fih-title">تاثیر تلاوت اور جذبہ قرأت</div>
+        <div class="fih-sub">دل میں اثر پیدا کرنے والی پُرسوز تلاوت کے اصول۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 37</div>
+    </a>
+    <a href="#bab-13" class="fih-item fn13">
+      <div class="fih-num">13</div>
+      <div class="fih-body">
+        <div class="fih-title">عملی مشقیں اور تطبیقی تربیت</div>
+        <div class="fih-sub">روزانہ کی پریکٹس، مشقی اسباق اور اصلاحی طریقے۔</div>
+      </div>
+      <div class="fih-pg">صفحہ 40</div>
+    </a>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 1
+══════════════════════════════════════════ -->
+<div class="bab-card b1" id="bab-1" data-bab="1">
+  <div class="bab-banner">
+    <div class="bab-num">📖 باب 1</div>
+    <h2>حسنِ ادا کا تعارف</h2>
+    <div class="bab-sub">قرآن کریم کو خوبصورت، مؤثر اور دل نشین انداز میں پڑھنے کی اہمیت</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFD0DC,#FFB3C6)">❓</div>
+        <h3>حسنِ ادا کیا ہے؟</h3>
+      </div>
+      <p>حُسنِ ادا سے مراد قرآن کریم کو صحیح تلفظ، درست مخارج، مناسب رفتار اور خوبصورت انداز میں پڑھنا ہے۔ حسن ادا صرف خوش آواز ہونے کا نام نہیں بلکہ حروف کی صحیح ادائیگی، تجوید کی پابندی اور تلاوت کے آداب کا اہتمام بھی اِس میں شامل ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#E8E0FF,#D5C8FF)">📜</div>
+        <h3>حسنِ ادا کی اہمیت قرآن و حدیث کی روشنی میں</h3>
+      </div>
+      <p>اللہ تعالیٰ قرآن مجید میں ارشاد فرماتا ہے:</p>
+      <div class="ayah-block">
+        <div class="ayah-ar">وَرَتِّلِ الْقُرْآنَ تَرْتِیلًا</div>
+        <div class="ayah-ref">سورۃ المزمل: 4</div>
+        <div class="ayah-tr">(قرآن کو خوب ٹھہر ٹھہر کر پڑھو)</div>
+      </div>
+      <p>رسول ﷺ نے فرمایا:</p>
+      <div class="hadith-block">
+        <div class="had-text">زَیِّنُوا الْقُرْآنَ بِأَصْوَاتِکُمْ</div>
+        <div class="had-ref">سنن نسائی: 1016</div>
+        <div class="had-tr">(اپنی آوازوں سے قرآن کو زینت دو)</div>
+      </div>
+      <p>اور ایک روایت میں ہے:</p>
+      <div class="hadith-block">
+        <div class="had-text">لَیْسَ مِنَّا مَنْ لَمْ یَتَغَنَّ بِالْقُرْآنِ</div>
+        <div class="had-ref">صحیح بخاری: 7527</div>
+        <div class="had-tr">(وہ ہم میں سے نہیں جو قرآن کو خوش الحانی سے نہ پڑھے)</div>
+      </div>
+      <div class="info-box ib-lav mt14">
+        ان ارشادات سے معلوم ہوتا ہے کہ قرآن کریم کی تلاوت میں خوبصورتی، خوش الحانی اور حُسنِ ادا مطلوب ہیں، بشرطیکہ تجوید کے اصولوں اور شرعی حدود کی پابندی کی جائے۔
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C8F0DC,#B5EAD7)">⭐</div>
+        <h3>حسنِ ادا کے فوائد</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> تلاوت میں دلکشی اور تاثیر پیدا ہوتی ہے۔</li>
+        <li><span class="pi">✅</span> قرآن کے الفاظ صحیح طور پر ادا ہوتے ہیں۔</li>
+        <li><span class="pi">✅</span> سننے والوں کے دلوں پر اچھا اثر پڑتا ہے۔</li>
+        <li><span class="pi">✅</span> تلاوت میں خشوع اور لذت پیدا ہوتی ہے۔</li>
+        <li><span class="pi">✅</span> قرآن کے ادب اور تاثیر کا اظہار ہوتا ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 خلاصہ باب</div>
+      <p>حُسنِ ادا سے مراد قرآن کریم کو صحیح مؤثر، اور خوبصورت انداز میں پڑھنے کا نام ہے، قرآن و سنت ہمیں ترتیل، خوش الحانی اور درست ادائیگی کے ساتھ تلاوت کرنے کی ترغیب دیتے ہیں، اسی لیے ہر طالبِ قرآن کو حُسنِ ادا سیکھنے اور اِس کی مسلسل مشق کرنے کی کوشش کرنی چاہیے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 2
+══════════════════════════════════════════ -->
+<div class="bab-card b2" id="bab-2" data-bab="2">
+  <div class="bab-banner">
+    <div class="bab-num">🌟 باب 2</div>
+    <h2>آدابِ تلاوت اور اصلاحِ نیت</h2>
+    <div class="bab-sub">تلاوت سے پہلے روحانی اور اخلاقی تیاری</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <p>قرآن کریم اللہ تعالیٰ کا کلام ہے، اس لیے اِس کی تلاوت بھی عام کتابوں کی طرح نہیں کی جاتی، بلکہ ادب واحترام اور خلوص نیت کے ساتھ کی جاتی ہے۔ تلاوت کے ظاہری آداب کے ساتھ ساتھ دل کی اصلاح اور نیت کی درستگی بھی نہایت ضروری ہے۔ جب قاری کی نیت خالص ہو اور وہ آدابِ تلاوت کا اہتمام کرے تو اُس کی تلاوت دلوں پر ڈالتی ہے اور اللہ تعالیٰ کے ہاں مقبول ہوتی ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C8F0DC,#B5EAD7)">💡</div>
+        <h3>اصلاحِ نیت کی اہمیت</h3>
+      </div>
+      <div class="info-box ib-mint">
+        اسلام میں ہر عمل کی قبولیت کا دارومدار نیت پر ہے۔ تلاوتِ قرآن بھی ایک عظیم عبادت ہے، اس لیے اِس کی بنیاد خالص نیت ہونی چاہیے۔
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C8F0DC,#B5EAD7)">✅</div>
+        <h3>تلاوت کی درست نیتیں</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">💚</span> اللہ تعالیٰ کی رضا حاصل کرنا۔</li>
+        <li><span class="pi">💚</span> قرآن کو سمجھنا اور اُس پر عمل کرنا۔</li>
+        <li><span class="pi">💚</span> اللہ تعالیٰ کا قرب حاصل کرنا۔</li>
+        <li><span class="pi">💚</span> اپنے اخلاق اور کردار کی اصلاح کرنا۔</li>
+        <li><span class="pi">💚</span> دوسروں تک قرآن کا پیغام پہنچانا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">❌</div>
+        <h3>غلط نیتیں</h3>
+      </div>
+      <ul class="pt-list list-no">
+        <li><span class="pi">❌</span> لوگوں سے تعریف کروانے کی خواہش۔</li>
+        <li><span class="pi">❌</span> اپنی آواز یا مہارت کی نمائش۔</li>
+        <li><span class="pi">❌</span> شہرت یا مقام حاصل کرنے کی نیت۔</li>
+        <li><span class="pi">❌</span> دوسروں پر برتری جتانا۔</li>
+      </ul>
+      <div class="info-box ib-mint mt14">خالص نیت تلاوت میں برکت پیدا کرتی ہے اور معمولی عمل کو بھی عظیم بنا دیتی ہے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#E8E0FF,#D5C8FF)">📿</div>
+        <h3>تلاوت کے آداب</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🤲</span> طہارت کا اہتمام (تلاوت سے پہلے وضو کرنا مستحب ہے، قرآن مجید کو پاکی کی حالت میں ہاتھ لگانا چاہیے)۔</li>
+        <li><span class="pi">📿</span> أعوذ باللہ اور بسم اللہ پڑھنا۔</li>
+        <li><span class="pi">🪑</span> ادب اور احترام کے ساتھ بیٹھنا۔</li>
+        <li><span class="pi">📖</span> تجوید کے ساتھ تلاوت کرنا۔</li>
+        <li><span class="pi">🧠</span> غور و فکر کے ساتھ پڑھنا۔</li>
+        <li><span class="pi">🤍</span> خشوع اور عاجزی اختیار کرنا۔</li>
+        <li><span class="pi">🔊</span> مناسب آواز میں تلاوت کرنا۔</li>
+        <li><span class="pi">⚡</span> تلاوت پر عمل کی نیت رکھنا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C8F0DC,#B5EAD7)">🔑</div>
+        <h3>حُسنِ ادا کا مجموعہ</h3>
+      </div>
+      <div class="info-box ib-lav">حُسنِ ادا صرف خوبصورت آواز کا نام نہیں بلکہ:</div>
+      <ul class="pt-list list-key mt8">
+        <li><span class="pi">🎯</span> صحیح تجوید</li>
+        <li><span class="pi">🎯</span> مناسب وقف و ابتداء</li>
+        <li><span class="pi">🎯</span> ادب و احترام</li>
+        <li><span class="pi">🎯</span> خشوع و خضوع</li>
+        <li><span class="pi">🎯</span> اخلاصِ نیت کا مجموعہ ہے۔</li>
+      </ul>
+      <div class="info-box ib-mint mt14">جس تلاوت میں اخلاص، ادب اور درست ادائیگی جمع ہو جائے وہی حقیقی "حُسنِ ادا" کہلاتی ہے۔</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 3
+══════════════════════════════════════════ -->
+<div class="bab-card b3" id="bab-3" data-bab="3">
+  <div class="bab-banner">
+    <div class="bab-num">🎵 باب 3</div>
+    <h2>تیاری صوت و لہجہ</h2>
+    <div class="bab-sub">آواز کو صاف، مضبوط اور پُر اثر بنانے کے اصول (تلاوتِ قرآن کے لئے)</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <p>یہ باب اِس بات کی رہنمائی کرتا ہے کہ قرآن کریم کی تلاوت سے پہلے قاری اپنی آواز اور لہجے کو کس طرح تیار کرے تاکہ تلاوت صاف، درست، خوبصورت اور قواعد تجوید کے مطابق ہو۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D8D0FF,#C9B8FF)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>تیاری صوت و لہجہ کا مطلب یہ ہے کہ قرآن کی تلاوت سے پہلے آواز کو اِس انداز میں تیار کیا جائے کہ الفاظ واضح درست اور خوبصورت انداز میں ادا ہو، اچھی آواز اور درست لہجہ تلاوت کو دلکش اور مؤثر بناتا ہے اور قرآن کے الفاظ کی ادائیگی کو بہتر کرتا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="num-label nl-lav">1 — آواز کی صفائی (وضوحِ صوت)</div>
+      <p class="mb8">اہم نکات:</p>
+      <ul class="pt-list list-steps">
+        <li><span class="pi">🎯</span> ہر حرف کو اُس کے صحیح مخرج سے ادا کرنا۔</li>
+        <li><span class="pi">🎯</span> الفاظ کو واضح اور الگ الگ پڑھنا۔</li>
+        <li><span class="pi">🎯</span> تلاوت میں جلدبازی سے بچنا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="num-label nl-mint">2 — آواز کو مضبوط رکھنا</div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">💪</span> اعتماد کے ساتھ تلاوت کرنا۔</li>
+        <li><span class="pi">💪</span> آواز میں کمزوری یا ٹوٹ پھوٹ نہ ہو۔</li>
+        <li><span class="pi">💪</span> سانس کا درست استعمال کرنا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="num-label nl-pink">3 — لہجہ</div>
+      <div class="info-box ib-lav mb8">قرآن کی تلاوت میں لہجہ اہم ہوتا ہے، مناسب لہجہ تلاوت کو خوبصورت اور دل کو مسحور کرنے والا بناتا ہے، لیکن اِس میں بناوٹ نہیں ہونی چاہیے۔</div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🌸</span> تلاوت کو ادب و احترام کے ساتھ ادا کرنا۔</li>
+        <li><span class="pi">🌸</span> تجوید کے مطابق نرمی اور خوبصورتی رکھنا۔</li>
+        <li><span class="pi">🌸</span> ہر آیت کے مطابق آواز کا اُتار چڑھاؤ رکھنا۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">💡 خلاصہ</div>
+      <p>اگر قاری اپنی آواز کو صاف، مضبوط اور درست لہجے کے ساتھ تیار کرے تو قرآن کریم کی تلاوت نہ صرف درست ہوتی ہے بلکہ دلوں پر اثر کرنے والی اور روحانی کیفیت پیدا کرنے والی بن جاتی ہے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 4
+══════════════════════════════════════════ -->
+<div class="bab-card b4" id="bab-4" data-bab="4">
+  <div class="bab-banner">
+    <div class="bab-num">🔤 باب 4</div>
+    <h2>مخارج و صفاتِ حروف</h2>
+    <div class="bab-sub">حروف کی درست ادائیگی اور تلفظ کی اصلاح</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <p>قرآن کریم کی خوبصورت تلاوت کے لیے ضروری ہے کہ ہر حرف کو اُس کے صحیح مقام سے ادا کیا جائے، اگر حروف کے مخارج اور صفات کا خیال نہ رکھا جائے تو معنی بھی بدل سکتے ہیں اور تلاوت کا حُسن بھی متاثر ہوتا ہے، اس لیے قاری کے لیے مخارج و صفات کا علم بنیادی حیثیت رکھتا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE880,#FFF5B0)">👄</div>
+        <h3>مخارج حروف کیا ہیں؟</h3>
+      </div>
+      <div class="info-box ib-yw">مخرج اُس جگہ کو کہتے ہیں جہاں سے حرف ادا ہوتا ہے۔ جب ہم کسی حرف کو پڑھتے ہیں تو آواز منہ، حلق، زبان یا ہونٹوں کے کسی خاص مقام سے نکلتی ہے، اِسی مقام کو مخرج کہتے ہیں۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE880,#FFF5B0)">⭐</div>
+        <h3>مخارج کی اہمیت</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> حروف کی صحیح پہچان ہوتی ہے۔</li>
+        <li><span class="pi">✅</span> تلفظ کی غلطیاں دور ہوتی ہیں۔</li>
+        <li><span class="pi">✅</span> قرآن مجید درست انداز میں پڑھا جاتا ہے۔</li>
+        <li><span class="pi">✅</span> تلاوت میں حُسن اور روانی پیدا ہوتی ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE880,#FFF5B0)">⚖️</div>
+        <h3>صفاتِ حروف کیا ہیں؟</h3>
+      </div>
+      <div class="info-box ib-yw mb8">صفات وہ خصوصیات ہیں جو کسی حرف کے تلفظ کے وقت ظاہر ہوتی ہیں اور اُسے دوسرے حروف سے ممتاز کرتی ہیں۔</div>
+
+      <div class="info-box ib-pk" style="font-size:1.05rem;text-align:center;letter-spacing:2px;">
+        <strong>مُفخَّم (موٹے) حروف: خ ۔ ص ۔ ض ۔ غ ۔ ط ۔ ظ ۔ ق</strong>
+      </div>
+      <div class="info-box ib-mint mt8">یہ سات حروف ہمیشہ بھاری آواز کے ساتھ پڑھے جاتے ہیں۔</div>
+      <div class="info-box ib-sk mt8">باقی اکثر حروف باریک (مرقق) پڑھے جاتے ہیں۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">⚠️</div>
+        <h3>عام غلطیاں</h3>
+      </div>
+      <ul class="pt-list list-no">
+        <li><span class="pi">❌</span> س کو ص کی طرح پڑھنا۔</li>
+        <li><span class="pi">❌</span> ذ کو ز کی طرح پڑھنا۔</li>
+        <li><span class="pi">❌</span> ق کو ک کی طرح ادا کرنا۔</li>
+        <li><span class="pi">❌</span> ع اور ا میں فرق نہ کرنا۔</li>
+        <li><span class="pi">❌</span> ح اور ہ کو ایک جیسے پڑھنا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE880,#FFF5B0)">🛠️</div>
+        <h3>عملی مشق</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> ماہر قاری یا اُستاد سے قرآن پڑھیں۔</li>
+        <li><span class="step-num">2</span> روزانہ مخصوص حروف کی مشق کریں۔</li>
+        <li><span class="step-num">3</span> اپنی تلاوت کی ریکارڈ کر کے سنیں۔</li>
+        <li><span class="step-num">4</span> مشکل حروف کو بار بار دہرائیں۔</li>
+        <li><span class="step-num">5</span> تجوید کے قواعد پر عمل کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 خلاصہ</div>
+      <p>مخارج و صفاتِ حروف قرآن کریم کی صحیح تلاوت کی بنیاد ہیں۔ جو قاری ہر حرف کو اُس کے صحیح مخرج اور مناسب صفت کے ساتھ ادا کرتا ہے تو تلاوت زیادہ خوبصورت، واضح اور درست ہو جاتی ہے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 5
+══════════════════════════════════════════ -->
+<div class="bab-card b5" id="bab-5" data-bab="5">
+  <div class="bab-banner">
+    <div class="bab-num">🌊 باب 5</div>
+    <h2>روانی تلاوت اور ادائیگی</h2>
+    <div class="bab-sub">الفاظ کو رواں، واضح اور خوبصورت انداز میں ادا کرنا</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8DCFF,#CCF0FF)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>اِس باب میں قرآن کریم کے الفاظ کو واضح، رواں اور خوبصورت انداز میں ادا کرنے کی تربیت دی جاتی ہے۔ تلاوت کا حسن صرف صحیح مخارج سے نہیں بلکہ الفاظ کی روانی، وضاحت اور دلنشین ادائیگی سے بھی پیدا ہوتا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8DCFF,#CCF0FF)">🌊</div>
+        <h3>روانی تلاوت سے مراد</h3>
+      </div>
+      <div class="info-box ib-sk">روانی تلاوت کا مطلب یہ ہے کہ قاری قرآن پڑھتے وقت الفاظ کو بغیر رکے، بغیر اٹکے اور مناسب رفتار کے ساتھ ادا کرے، نہ بہت تیز پڑھے کہ حروف اور حرکات ضائع ہو جائیں اور نہ اتنا آہستہ کہ روانی ختم ہو جائے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8DCFF,#CCF0FF)">💡</div>
+        <h3>واضح ادائیگی کی اہمیت</h3>
+      </div>
+      <p>قرآن کریم کا ہر حرف اپنی مخصوص آواز اور حق رکھتا ہے، اگر حروف واضح ادا نہ ہوں تو معنی میں تبدیلی یا تلاوت کے حسن میں کمی آ سکتی ہے، اس لیے ضروری ہے کہ:</p>
+      <ul class="pt-list list-ok mt8">
+        <li><span class="pi">✅</span> ہر حرف صاف اور نمایاں سنائی دے۔</li>
+        <li><span class="pi">✅</span> حرکات (زیر، زبر، پیش) درست ادا ہوں۔</li>
+        <li><span class="pi">✅</span> شدت، مد اور غنّہ کا پورا خیال رکھا جائے۔</li>
+        <li><span class="pi">✅</span> الفاظ آپس میں گڈمڈ نہ ہوں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8DCFF,#CCF0FF)">🌟</div>
+        <h3>خوبصورت تلاوت کے لیے</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🌸</span> آواز میں نرمی اور وقار ہو۔</li>
+        <li><span class="pi">🌸</span> مناسب اُتار چڑھاؤ اختیار کیا جائے۔</li>
+        <li><span class="pi">🌸</span> وقف اور ابتداء کے اصولوں کا خیال رکھا جائے۔</li>
+        <li><span class="pi">🌸</span> جلدبازی سے پرہیز کیا جائے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8DCFF,#CCF0FF)">🛠️</div>
+        <h3>عملی مشق</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> روزانہ چند آیات آہستہ اور غور سے پڑھیں۔</li>
+        <li><span class="step-num">2</span> مشکل الفاظ کو بار بار دہرائیں۔</li>
+        <li><span class="step-num">3</span> ماہر قاری کی تلاوت سن کر نقل کریں۔</li>
+        <li><span class="step-num">4</span> اپنی تلاوت ریکارڈ کر کے غلطیوں کا جائزہ لیں۔</li>
+        <li><span class="step-num">5</span> اُستاد کی نگرانی میں مسلسل مشق کریں۔</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 6
+══════════════════════════════════════════ -->
+<div class="bab-card b6" id="bab-6" data-bab="6">
+  <div class="bab-banner">
+    <div class="bab-num">💨 باب 6</div>
+    <h2>تنفّس کی مشقیں اور قوتِ سانس</h2>
+    <div class="bab-sub">لمبی سانس، سانس کو قابو میں رکھنا اور مسلسل تلاوت کی تربیت</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>قرآن کریم کی خوبصورت تلاوت کے لیے صرف مخارج اور تجوید ہی کافی نہیں بلکہ درست تنفّس (سانس لینے کا طریقہ) بھی بہت اہم ہے۔ اگر قاری کی سانس مضبوط اور قابو ہو تو وہ آیات کو روانی، سکون اور حُسنِ ادائیگی کے ساتھ پڑھ سکتا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">⭐</div>
+        <h3>تنفّس کی اہمیت</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> تلاوت میں روانی پیدا ہوتی ہے۔</li>
+        <li><span class="pi">✅</span> آیات کو درمیان میں غیر ضروری طور پر نہیں توڑنا پڑتا۔</li>
+        <li><span class="pi">✅</span> آواز میں خوبصورتی اور استحکام آتا ہے۔</li>
+        <li><span class="pi">✅</span> لمبی آیات کو پڑھنے میں مدد ملتی ہے۔</li>
+        <li><span class="pi">✅</span> قاری تھکن اور ہانپنے سے محفوظ رہتا ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">💡</div>
+        <h3>قوتِ سانس سے مراد</h3>
+      </div>
+      <div class="info-box ib-pk">قوتِ سانس سے مراد یہ ہے کہ قاری اپنی سانس کو مناسب وقت تک برقرار رکھ سکے اور تلاوت کے دوران اُس پر مکمل کنٹرول رکھے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">🌬️</div>
+        <h3>سانس لینے کی مشق</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> ناک کے ذریعے آہستہ آہستہ سانس لیں۔</li>
+        <li><span class="step-num">2</span> چند سیکنڈ روکیں۔</li>
+        <li><span class="step-num">3</span> منہ کے ذریعے آہستہ آہستہ خارج کریں۔</li>
+        <li><span class="step-num">4</span> روزانہ 5 سے 10 منٹ دہرائیں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">📖</div>
+        <h3>تلاوت میں سانس کی مشق</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🎯</span> مخصوص آیات کو ایک سانس میں پڑھنے کی کوشش کریں۔</li>
+        <li><span class="pi">🎯</span> آہستہ آہستہ طویل آیات کی طرف بڑھیں۔</li>
+        <li><span class="pi">🎯</span> گہری سانس لینے کے بعد آواز کو زیادہ دیر تک جاری رکھنے کی کوشش کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFCCC0,#FFB5A7)">⚠️</div>
+        <h3>احتیاطیں</h3>
+      </div>
+      <ul class="pt-list list-warn">
+        <li><span class="pi">⚠️</span> سانس ہمیشہ مناسب وقف (رکنے کی جگہ) پر لیں۔</li>
+        <li><span class="pi">⚠️</span> کلمات یا آیات کے درمیان بلا ضرورت سانس نہ لیں۔</li>
+        <li><span class="pi">⚠️</span> جلدی جلدی سانس لینے سے اجتناب کریں۔</li>
+        <li><span class="pi">⚠️</span> تلاوت کے درمیان جسم کو پُر سکون رکھیں۔</li>
+        <li><span class="pi">⚠️</span> آیت مکمل ہونے سے پہلے سانس ختم کر دینا۔</li>
+        <li><span class="pi">⚠️</span> بہت زور لگا کر پڑھنا۔</li>
+        <li><span class="pi">⚠️</span> غلط جگہ پر وقف کرنا۔</li>
+        <li><span class="pi">⚠️</span> سانس کی کمی کی وجہ سے الفاظ کو کھینچنا یا جلدی ادا کرنا۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 خلاصہ</div>
+      <p>تنفّس کی مشقیں قاری کو لمبی سانس، سانس پر قابو اور مسلسل خوبصورت تلاوت کی صلاحیت عطا کرتی ہیں۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 7
+══════════════════════════════════════════ -->
+<div class="bab-card b7" id="bab-7" data-bab="7">
+  <div class="bab-banner">
+    <div class="bab-num">⏸️ باب 7</div>
+    <h2>اصولِ وقف و ابتداء</h2>
+    <div class="bab-sub">وقف، وصل اور درست آغاز کی فنی و جمالیاتی درستگی</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#B8F5CC,#D0FFE0)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>قرآن کریم کی خوبصورت، مؤثر اور بامعنی تلاوت کے لیے صرف حروف کی درست ادائیگی کافی نہیں، بلکہ یہ جاننا بھی ضروری ہے کہ کہاں رکنا (وقف)، کہاں ملا کر پڑھنا (وصل) اور کہاں سے دوبارہ آغاز (ابتداء) کرنا ہے۔</p>
+    </div>
+
+    <div class="md-table">
+      <div class="mdt-row">
+        <div class="mdt-label">وقف کیا ہے؟</div>
+        <div class="mdt-val">تلاوت کے دوران کسی مناسب مقام پر آواز کو عارضی طور پر روکنے کو وقف کہتے ہیں۔</div>
+      </div>
+      <div class="mdt-row">
+        <div class="mdt-label">وصل کیا ہے؟</div>
+        <div class="mdt-val">ایک لفظ یا آیت کو بغیر رکے اگلے لفظ یا آیت کے ساتھ ملا کر پڑھنے کو وصل کہتے ہیں۔</div>
+      </div>
+      <div class="mdt-row">
+        <div class="mdt-label">ابتداء کیا ہے؟</div>
+        <div class="mdt-val">وقف کے بعد دوبارہ تلاوت شروع کرنے کو ابتداء کہتا ہے، ابتداء ہمیشہ ایسی جگہ سے ہونی چاہیے جہاں معنی واضح اور درست رہیں۔</div>
+      </div>
+    </div>
+
+    <div class="sec mt20">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#B8F5CC,#D0FFE0)">⭐</div>
+        <h3>وقف و ابتداء کی اہمیت</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> قرآن کریم کے صحیح معنی محفوظ رہتے ہیں۔</li>
+        <li><span class="pi">✅</span> تلاوت میں حُسن، روانی اور اثر پیدا ہوتا ہے۔</li>
+        <li><span class="pi">✅</span> سننے والوں کے لیے مفہوم سمجھنا آسان ہو جاتا ہے۔</li>
+        <li><span class="pi">✅</span> غلط جگہ رکنے یا شروع کرنے سے معنی میں خرابی پیدا نہیں ہوتی۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#B8F5CC,#D0FFE0)">🛠️</div>
+        <h3>عملی مشق</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> جہاں قرآن کریم میں وقف کی علامت موجود ہو، وہاں رکنے کی کوشش کریں۔</li>
+        <li><span class="step-num">2</span> اگر سانس ٹوٹ جائے تو آیت کے آخر میں رکنا بہترین اور سنت طریقہ ہے۔</li>
+        <li><span class="step-num">3</span> اگر آیت لمبی ہو اور درمیان میں سانس لینے کی ضرورت محسوس ہو تو مناسب جگہ وقف کر سکتے ہیں۔</li>
+        <li><span class="step-num">4</span> جہاں معنی مکمل ہوں وہاں وقف کرنا بہتر ہے۔</li>
+        <li><span class="step-num">5</span> جہاں معنی نامکمل ہوں وہاں بلا ضرورت وقف نہ کیا جائے۔</li>
+        <li><span class="step-num">6</span> وقف کے بعد ایسی جگہ سے ابتداء کی جائے جو معنی کے اعتبار سے درست ہو۔</li>
+      </ul>
+    </div>
+
+    <div class="hadith-block">
+      <div class="had-text">الوقف للمعنى</div>
+      <div class="had-ref">تجوید کے ماہرین کا قول</div>
+      <div class="had-tr">(وقف کا دارومدار معنی پر ہے)</div>
+    </div>
+
+    <div class="info-box ib-mint mt14">اس لیے وقف و ابتداء کو صحیح طور پر سیکھنے کے لیے قرآن کریم کے معنی و مفہوم کو سمجھنا بھی بہت ضروری ہے۔</div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 8
+══════════════════════════════════════════ -->
+<div class="bab-card b8" id="bab-8" data-bab="8">
+  <div class="bab-banner">
+    <div class="bab-num">🎶 باب 8</div>
+    <h2>فنِ مدّات اور جمالِ ادائیگی</h2>
+    <div class="bab-sub">مدود کی صحیح مقدار، نرمی اور خوبصورت تلاوت</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE888,#FFF4B0)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>قرآن مجید کی تلاوت میں الفاظ کو صحیح اور خوبصورت انداز میں پڑھنا بہت ضروری ہے۔ مدود (کھینچ کر پڑھنا) تلاوت کو نرم، واضح اور دلکش بناتے ہیں۔</p>
+      <div class="info-box ib-yw mt8">مد کا مطلب ہے، کسی حرفِ مد (ا و ی) کو کھینچ کر پڑھنا۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE888,#FFF4B0)">📏</div>
+        <h3>مد کو صحیح مقدار میں کیسے پڑھیں؟</h3>
+      </div>
+      <div class="md-table">
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#FFD0DC,#FFB3C6)">قصر (ایک الف)</div>
+          <div class="mdt-val">ایک اِسٹیپ میں پڑھنا (مختصر) — مثال: جَاءَ</div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#C9B8FF,#E0D8FF)">توسط (دو الف)</div>
+          <div class="mdt-val">دو اِسٹیپس میں پڑھنا (درمیانہ) — مثال: جَاءَ</div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#B5EAD7,#D0F5E8)">طول (تین الف)</div>
+          <div class="mdt-val">تین اِسٹیپس میں پڑھنا (لمبا کھینچنا) — مثال: جَاءَ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE888,#FFF4B0)">🌟</div>
+        <h3>خوبصورت تلاوت کے لیے</h3>
+      </div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> آواز نرم ہونا ضروری ہے۔</li>
+        <li><span class="pi">✅</span> آہستہ پڑھیں۔</li>
+        <li><span class="pi">✅</span> سانس آرام سے لیں۔</li>
+        <li><span class="pi">✅</span> کھینچ کر نہ پڑھیں۔</li>
+        <li><span class="pi">✅</span> جلدی نہ کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFE888,#FFF4B0)">🎨</div>
+        <h3>مد کے انداز</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🔵</span> قصر — مختصر اور صاف انداز۔</li>
+        <li><span class="pi">🟣</span> توسط — متوازن اور نرم انداز۔</li>
+        <li><span class="pi">🟢</span> طول — گہرا اور دلکش انداز۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 خلاصہ</div>
+      <p>صحیح مد سے تلاوت خوبصورت اور دلکش بن جاتی ہے۔ جب ہم مد کو صحیح انداز (قصر، توسط اور طول) میں پڑھتے ہیں تو تلاوت واضح، نرم اور دلکش ہو جاتی ہے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 9
+══════════════════════════════════════════ -->
+<div class="bab-card b9" id="bab-9" data-bab="9">
+  <div class="bab-banner">
+    <div class="bab-num">🎼 باب 9</div>
+    <h2>نغمگی تلاوت اور صوتی لطافت</h2>
+    <div class="bab-sub">غنہ، ادغام، اخفاء اور صوتی اُتار چڑھاؤ کے ذریعے تلاوت میں خوبصورتی پیدا کرنا</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>قرآن کریم کی تلاوت میں خوبصورتی صرف اچھی آواز سے نہیں آتی بلکہ آواز کے صحیح استعمال سے پیدا ہوتی ہے۔ قاری کو معلوم ہونا چاہیے کہ کن مقامات پر آواز کو نرم، بلند، پست یا کھینچنا ہے۔ اِس عمل کو صوتی اُتار چڑھاؤ (voice modulation) کہتے ہیں۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">🔊</div>
+        <h3>غنّہ کے وقت آواز کا استعمال</h3>
+      </div>
+      <div class="info-box ib-lav mb8">غنّہ ناک سے ادا ہونے والی آواز ہے جو عموماً دو حرکات کے برابر ہوتی ہے۔ غنّہ کرتے وقت آواز کو اچانک بلند یا پست نہ کریں بلکہ ہلکے سے اوپر لے جا کر نرمی کے ساتھ واپس لائیں۔</div>
+      <div class="info-box ib-lav mb8" style="text-align:center;font-size:1.05rem;">مشق: اَن.....اَن، اِن.....اِن، ثُمَّ.....ثُمَّ</div>
+      <p class="mb8">غنّہ میں 3 اِسٹیپس مفید ہوتے ہیں:</p>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> عام آواز۔</li>
+        <li><span class="step-num">2</span> ہلکا سا بلند ہونا۔</li>
+        <li><span class="step-num">3</span> اصل سطح پر واپس۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">📈</div>
+        <h3>مد میں آواز کا اُتار چڑھاؤ</h3>
+      </div>
+      <div class="info-box ib-lav">مد میں حرف کو کھینچا جاتا ہے۔ مد کے دوران آواز کو سیدھا رکھنے کے بجائے ہلکا سا اوپر لے جانا تلاوت کو دلکش بناتا ہے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">🎵</div>
+        <h3>اخفاء</h3>
+      </div>
+      <div class="info-box ib-lav">اخفاء میں نون ساکن یا تنوین کو لمکمل ظاہر نہیں کیا جاتا اور اُسے غنّہ کے ساتھ ادا کیا جاتا ہے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">📖</div>
+        <h3>مختلف آیات میں آواز کا استعمال</h3>
+      </div>
+      <div class="md-table">
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#B5EAD7,#D0F5E8)">رحمت اور جنت کی آیات</div>
+          <div class="mdt-val">آواز نرم، پُر سکون اور خوشگوار ہو۔</div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#FFB5A7,#FFD0C8)">عذاب اور تنبیہ کی آیات</div>
+          <div class="mdt-val">آواز میں سنجیدگی اور وزن ہو۔</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#F0C0FF,#F8D8FF)">⬆️⬇️</div>
+        <h3>آواز کے 4 درجے</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> سیدھی آواز (شاآء)</li>
+        <li><span class="step-num">2</span> ہلکی بلندی (شاآء)</li>
+        <li><span class="step-num">3</span> بلند مقام (شاآء)</li>
+        <li><span class="step-num">4</span> نرمی سے واپس (شاآء)</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 یاد رکھیں</div>
+      <p>قرآن کریم کی تلاوت میں اُتار چڑھاؤ کا مقصد گانے کا طرز اختیار کرنا نہیں بلکہ معانی کو مؤثر اور خوبصورت انداز میں پیش کرنا ہے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 10
+══════════════════════════════════════════ -->
+<div class="bab-card b10" id="bab-10" data-bab="10">
+  <div class="bab-banner">
+    <div class="bab-num">🎯 باب 10</div>
+    <h2>تجویدی مہارت اور صوتی ہم آہنگی</h2>
+    <div class="bab-sub">تجوید کے قواعد کو خوبصورت انداز تلاوت کے ساتھ جوڑنا</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8D8FF,#C8ECFF)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>اِس باب میں ہم سیکھیں گے کہ تجوید کے قواعد کو صرف صحیح ادا کرنا کافی نہیں بلکہ اُنہیں خوبصورت انداز، مناسب رفتار اور درست اُتار چڑھاؤ کے ساتھ ادا کرنا بھی ضروری ہے۔ جب تجوید اور حُسنِ صوت آپس میں مل جاتے ہیں تو تلاوت زیادہ مؤثر، دلنشین اور روح پرور بن جاتی ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8D8FF,#C8ECFF)">🛠️</div>
+        <h3>عملی طریقہ اور مشق</h3>
+      </div>
+
+      <div class="num-label nl-lav mt8">1 — غنّہ کے وقت آواز میں نرمی پیدا کریں</div>
+      <div class="info-box ib-lav mb8">مثالیں: إِنَّ اللَّہ، ثُمَّ، إِنَّا أَعْطَیْنَاکَ، عَمَّ یَتَسَاءَلُونَ۔</div>
+
+      <div class="num-label nl-sky">2 — مد میں آواز کو مقررہ مقدار تک بالا کریں</div>
+      <div class="info-box ib-sk mb8">مثالیں: آء، الضَّالِّین، وَلَا، یٰأَیُّهَا الَّذِینَ آمَنُوا، إِنِّی لَکُمْ رَسُولٌ۔</div>
+
+      <div class="num-label nl-mint">3 — اخفاء</div>
+      <div class="info-box ib-mint mb8">مثالیں: مِنْ شَرِّ، مِنْ کُلِّ، مَنْ أَمَرَ، نُنتِّقَمُ مِنْهُ، مِنْ تَحْتِهَا۔</div>
+
+      <div class="num-label nl-yw">4 — قلقلہ (ب ج د ط ق)</div>
+      <div class="info-box ib-yw mb8">مثالیں: أَحَد، قُلْ أَعُوذُ، قَلَّ الفَلَق۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8D8FF,#C8ECFF)">⏸️</div>
+        <h3>وقف پر آواز</h3>
+      </div>
+      <div class="info-box ib-sk">رکتے وقت آواز کو اچانک نہ کاٹیں بلکہ نرمی اور سکون کے ساتھ ختم کریں۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8D8FF,#C8ECFF)">📖</div>
+        <h3>آواز کو آیات کے معنی کے مطابق</h3>
+      </div>
+      <ul class="pt-list">
+        <li style="background:#EDFFF7;border-color:rgba(125,207,182,.3)"><span class="pi">🟢</span> رحمت کی آیات: آواز نرم، پُر سکون اور خوشگوار رکھیں۔</li>
+        <li style="background:#F4F0FF;border-color:rgba(163,137,224,.3)"><span class="pi">🟣</span> دعا کی آیات: عاجزی اور التجا کا انداز پیدا کریں۔</li>
+        <li style="background:#FFF0F4;border-color:rgba(255,133,161,.3)"><span class="pi">🔴</span> عذاب کی آیات: آواز میں سنجیدگی اور قوت پیدا کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#A8D8FF,#C8ECFF)">📅</div>
+        <h3>روزانہ مشق پلان</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> 5 منٹ غنّہ کی مشق۔</li>
+        <li><span class="step-num">2</span> 5 منٹ مد کی مشق۔</li>
+        <li><span class="step-num">3</span> 5 منٹ اخفاء کی مشق۔</li>
+        <li><span class="step-num">4</span> سورۃ الفاتحہ ایک بار تجوید کے ساتھ پڑھیں۔</li>
+        <li><span class="step-num">5</span> اپنی آواز ریکارڈ کر کے سنیں اور غلطیوں کی نشاندہی کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">🏆 بہترین قاری</div>
+      <p>بہترین قاری وہ ہے جو تجوید کے قواعد کو صحیح ادا کرے، آواز میں نرمی اور حُسن پیدا کرے اور آیات کے معنی کے مطابق مناسب اُتار چڑھاؤ اختیار کرے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 11
+══════════════════════════════════════════ -->
+<div class="bab-card b11" id="bab-11" data-bab="11">
+  <div class="bab-banner">
+    <div class="bab-num">🎨 باب 11</div>
+    <h2>تنوعِ لہجہ اور صوتی انداز</h2>
+    <div class="bab-sub">تلاوت کے دوران آواز کو مختلف انداز، کیفیت اور لہجوں میں پیش کرنے کی مہارت</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C0F0D8,#D8FAE8)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>تلاوت میں خوبصورتی اُس وقت آتی ہے جب قاری ایک ہی انداز میں نہ پڑھے بلکہ آیات کے ساتھ اپنی آواز کے انداز کو بھی بدلتا جائے۔ اِس باب میں ہم سیکھیں گے کہ ایک ہی ربط والی آیات کو مختلف لہجوں میں کیسے پڑھا جاتا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#C0F0D8,#D8FAE8)">📋</div>
+        <h3>عملی اصول — مثال نمبر 1</h3>
+      </div>
+
+      <div class="md-table">
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#AEE4FF,#C8ECFF);color:#1a3a6a">سادہ اور سیدھا لہجہ</div>
+          <div class="mdt-val"><span style="font-size:1.1rem">اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِیۡنَ ۝</span><br><small style="color:var(--muted)">سب سے پہلے آیت کو نارمل اور سیدھے انداز میں پڑھیں۔</small></div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#C9B8FF,#E0D8FF)">نرم اور مختلف لہجہ</div>
+          <div class="mdt-val"><span style="font-size:1.1rem">الرَّحْمٰنِ الرَّحِیمِ ۝</span><br><small style="color:var(--muted)">آواز میں تھوڑی نرمی یا تبدیلی کے ساتھ پڑھیں۔</small></div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#FFB5A7,#FFD0C8)">گہرائی اور وزن</div>
+          <div class="mdt-val"><span style="font-size:1.1rem">مٰلِکِ یَوْمِ الدِّینِ ۝</span><br><small style="color:var(--muted)">گہرائی، زور یا وقف کے ساتھ پڑھیں۔</small></div>
+        </div>
+        <div class="mdt-row">
+          <div class="mdt-label" style="background:linear-gradient(135deg,#B5EAD7,#D0F5E8)">متوازن واپسی</div>
+          <div class="mdt-val"><span style="font-size:1.1rem">إِیَّاکَ نَعْبُدُ وَإِیَّاکَ نَسْتَعِیۡنُ ۝</span><br><small style="color:var(--muted)">دوبارہ سادہ اور متوازن لہجہ۔</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">📌 خلاصہ</div>
+      <p>تلاوت کی اصل خوبصورتی یہ ہے کہ قاری آیات کے ساتھ آواز کے انداز میں مناسب تبدیلی کرے اور ہر آیت کے مفہوم کے مطابق لہجے کو ڈھالے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 12
+══════════════════════════════════════════ -->
+<div class="bab-card b12" id="bab-12" data-bab="12">
+  <div class="bab-banner">
+    <div class="bab-num">❤️ باب 12</div>
+    <h2>تاثیرِ تلاوت اور جذبہ قرأت</h2>
+    <div class="bab-sub">دل میں اثر کرنے والی پُرسوز تلاوت کے اصول</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFBCC0,#FFD4D8)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>قرآن مجید کی تلاوت جب اخلاص، توجہ اور تدبر کے ساتھ کی جائے تو یہ دلوں کو نرم کرتی ہے، ایمان کو تازہ کرتی ہے اور انسان کو اللہ کے قریب کر دیتی ہے — ایسی تلاوت صرف آواز نہیں بلکہ روح کی غذا ہے۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFBCC0,#FFD4D8)">💡</div>
+        <h3>تاثیرِ تلاوت سے مراد</h3>
+      </div>
+      <div class="info-box ib-pk">تاثیر تلاوت سے مراد یہ ہے کہ قرآن کی قرأت دل پر اثر کرے، جذبات بیدار ہوں اور انسان اللہ تعالیٰ کی یاد میں کھو جائے۔</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFBCC0,#FFD4D8)">🌟</div>
+        <h3>پُرسوز تلاوت کے اصول</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🎯</span> خلوصِ نیت: تلاوت صرف اللہ کی رضا کے لیے ہو، نہ کہ کسی دنیاوی مقصد کے لیے۔</li>
+        <li><span class="pi">🎯</span> تدبر اور غور و فکر: قرآن کو سمجھ کر، رُک رُک کر اور معنی پر غور کرتے ہوئے پڑھا جائے۔</li>
+        <li><span class="pi">🎯</span> آواز میں عاجزی، نرمی اور درد ہو جو دل کو مسحور کرے۔</li>
+        <li><span class="pi">🎯</span> ہر حرف کو صحیح مخرج سے ادا کیا جائے۔</li>
+        <li><span class="pi">🎯</span> مناسب جگہ رکنا اور آواز کو خوبصورتی سے کھینچنا۔</li>
+        <li><span class="pi">🎯</span> تلاوت صرف زبان سے نہیں بلکہ دل کے ساتھ ہو۔</li>
+        <li><span class="pi">🎯</span> معانی پر غور کرنے سے تلاوت میں خود بخود تاثیر پیدا ہوتی ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFBCC0,#FFD4D8)">🛠️</div>
+        <h3>عملی مشق</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> آیات کو آہستہ سے ٹھہر ٹھہر کر پڑھیں۔</li>
+        <li><span class="step-num">2</span> وقف اور مد کا خیال رکھیں۔</li>
+        <li><span class="step-num">3</span> آواز میں عاجزی اور خشوع پیدا کریں۔</li>
+        <li><span class="step-num">4</span> معانی پر غور کریں۔</li>
+        <li><span class="step-num">5</span> تلاوت کے بعد دل کی کیفیت محسوس کریں۔</li>
+      </ul>
+    </div>
+
+    <div class="khalasa">
+      <div class="khalasa-tag">💖 خلاصہ</div>
+      <p>پُر سوز تلاوت وہ ہے جو دل کو بدل دے، آنکھوں کو نم کر دے اور انسان کو اللہ کے قریب کر دے۔ جب قرآن دل سے پڑھا جائے تو وہ روشن بن کر زندگی کو منور کر دیتی ہے۔</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BAB 13
+══════════════════════════════════════════ -->
+<div class="bab-card b13" id="bab-13" data-bab="13">
+  <div class="bab-banner">
+    <div class="bab-num">🛠️ باب 13</div>
+    <h2>تلاوت کو خوبصورت انداز میں پڑھنے کے اصول</h2>
+    <div class="bab-sub">عملی مشق، روزانہ پریکٹس اور اصلاحی طریقے</div>
+  </div>
+  <div class="bab-body">
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">📌</div>
+        <h3>تعارف</h3>
+      </div>
+      <p>یہ باب اِس بات کی رہنمائی دیتا ہے کہ قرآن مجید کی تلاوت کو صرف صحیح نہیں بلکہ خوبصورت، نرم، باوقار اور مؤثر انداز میں کیسے پڑھا جائے۔ اِس میں آواز کی بہتری، لہجے کا اُتار چڑھاؤ، روزانہ کی مشق اور اصلاحی طریقے شامل ہیں۔</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">⭐</div>
+        <h3>عملی مشقوں کی اہمیت</h3>
+      </div>
+      <div class="info-box ib-lav mb8">تلاوت کی خوبصورتی مسلسل مشق سے پیدا ہوتی ہے۔ صرف سننا یا سمجھنا کافی نہیں، روزانہ کی آواز کی تربیت ضروری ہے۔</div>
+      <ul class="pt-list list-ok">
+        <li><span class="pi">✅</span> روزانہ تلاوت سے آواز نکھرتی ہے۔</li>
+        <li><span class="pi">✅</span> زبان اور لہجہ نرم اور واضح ہوتا ہے۔</li>
+        <li><span class="pi">✅</span> تلاوت میں اعتماد اور روانی آتی ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">📅</div>
+        <h3>روزانہ مشق کا نظام</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> 10 منٹ اونچی آواز میں تلاوت (clear voice practice)۔</li>
+        <li><span class="step-num">2</span> 5 منٹ آہستہ آواز میں تلاوت (soft voice practice)۔</li>
+        <li><span class="step-num">3</span> 5 منٹ اپنی آواز ریکارڈ کر کے سننا۔</li>
+        <li><span class="step-num">4</span> 5 منٹ مشکل حصوں کی بار بار مشق۔</li>
+        <li><span class="step-num">5</span> روزانہ کم از کم 20 سے 30 منٹ پریکٹس ضروری ہے۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">🔊</div>
+        <h3>آواز کی سطح</h3>
+      </div>
+      <div class="info-box ib-lav mb8">تلاوت میں آواز ایک ہی سطح پر نہیں ہونی چاہیے:</div>
+      <ul class="pt-list">
+        <li style="background:#EDFFF7;border-color:rgba(125,207,182,.3)"><span class="pi">🟢</span> رحمت والی آیات میں نرم آواز۔</li>
+        <li style="background:#F4F0FF;border-color:rgba(163,137,224,.3)"><span class="pi">🔵</span> عظمت والی آیات میں مضبوط آواز۔</li>
+        <li style="background:#FFFCE8;border-color:rgba(255,224,102,.3)"><span class="pi">🟡</span> وقف کے وقت ہلکی کمی (tone down)۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#FFBCC0,#FFD4D8)">⚠️</div>
+        <h3>تلاوت میں خوبصورتی کو خراب کرنے والی غلطیاں</h3>
+      </div>
+      <ul class="pt-list list-no">
+        <li><span class="pi">❌</span> بہت زیادہ تیز پڑھنا۔</li>
+        <li><span class="pi">❌</span> آواز کو ایک ہی انداز میں رکھنا۔</li>
+        <li><span class="pi">❌</span> الفاظ کو ادھورا بولنا۔</li>
+        <li><span class="pi">❌</span> سانس کا بے ترتیب استعمال۔</li>
+        <li><span class="pi">❌</span> وقف کے بغیر مسلسل پڑھنا۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">📈</div>
+        <h3>آواز کو بہتر بنانے کے طریقے</h3>
+      </div>
+      <ul class="pt-list list-steps">
+        <li><span class="step-num">1</span> روزانہ اپنی تلاوت ریکارڈ کریں اور سنیں۔</li>
+        <li><span class="step-num">2</span> غلطی والے حصے کو 10 سے 15 بار دہرائیں۔</li>
+        <li><span class="step-num">3</span> آہستہ اور واضح پڑھنے کی عادت ڈالیں۔</li>
+        <li><span class="step-num">4</span> اچھے قراء (Qari) کی تلاوت سنیں اور نقل کریں۔</li>
+        <li><span class="step-num">5</span> تلاوت کے دوران آئینے کے سامنے یا موبائل میں خود کو دیکھ کر پڑھیں۔</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-icon" style="background:linear-gradient(135deg,#D0C8FF,#E4DCFF)">🏆</div>
+        <h3>آواز کو خوبصورت بنانے کے اصول</h3>
+      </div>
+      <ul class="pt-list list-key">
+        <li><span class="pi">🎯</span> روزانہ کم سے کم 20 سے 30 منٹ مستقل پریکٹس۔</li>
+        <li><span class="pi">🎯</span> ایک ہی کو مختلف انداز میں پڑھنا۔</li>
+        <li><span class="pi">🎯</span> آواز میں نرمی اور اعتماد دونوں رکھنا۔</li>
+        <li><span class="pi">🎯</span> سانس کو کنٹرول میں رکھنا۔</li>
+        <li><span class="pi">🎯</span> وقف پر آواز کو آہستہ کم کرنا۔</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GOLDEN RULE
+══════════════════════════════════════════ -->
+<div class="golden anim-fade">
+  <h2>خوبصورت تلاوت وہ ہے جو دل سے نکلے،</h2>
+  <div class="golden-line"></div>
+  <h2>جلدی میں نہ ہو اور ہر لفظ واضح ہو۔</h2>
+</div>
+
+</div><!-- end .page -->
+
+<!-- ══ UPDATE TOAST ══ -->
+<div id="updateToast">
+  <span>نئی اپڈیٹ دستیاب ہے!</span>
+  <button id="updateBtn">اپڈیٹ کریں ↻</button>
+</div>
+
+<!-- scroll to top -->
+<a href="#" class="to-top no-print" id="toTop" title="اوپر جائیں" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
+
+<script>
+/* ═══════════════════════════════════════
+   NAVBAR — TOGGLE DRAWER
+═══════════════════════════════════════ */
+function toggleMenu(){
+  const btn     = document.getElementById('menuBtn');
+  const drawer  = document.getElementById('nbDrawer');
+  const overlay = document.getElementById('nbOverlay');
+  const isOpen  = drawer.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  drawer.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
+/* ═══════════════════════════════════════
+   SCROLL EVENTS — navbar + progress + scroll-to-top
+═══════════════════════════════════════ */
+const navbar    = document.getElementById('navbar');
+const toTop     = document.getElementById('toTop');
+const progBar   = document.getElementById('nbProgress');
+
+function onScroll(){
+  const sy = window.scrollY;
+  const dh = document.documentElement.scrollHeight - window.innerHeight;
+
+  /* navbar shadow */
+  navbar.classList.toggle('scrolled', sy > 10);
+
+  /* reading progress bar */
+  progBar.style.width = (dh > 0 ? (sy / dh * 100) : 0) + '%';
+
+  /* scroll-to-top button */
+  toTop.classList.toggle('show', sy > 320);
+
+  /* active chapter highlight */
+  document.querySelectorAll('.bab-card[data-bab]').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    card.classList.toggle('active-section',
+      rect.top < window.innerHeight * 0.5 && rect.bottom > 0);
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll(); // run once on load
+
+/* ═══════════════════════════════════════
+   INTERSECTION OBSERVER — SCROLL ANIMATIONS
+═══════════════════════════════════════ */
+const iOpts = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
+
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      cardObserver.unobserve(e.target);
+    }
+  });
+}, iOpts);
+
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      fadeObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+
+/* observe bab-cards */
+document.querySelectorAll('.bab-card').forEach(c => cardObserver.observe(c));
+
+/* observe anim-fade elements */
+document.querySelectorAll('.anim-fade').forEach(el => fadeObserver.observe(el));
+
+/* observe list items with stagger */
+document.querySelectorAll('.pt-list').forEach(list => {
+  list.querySelectorAll('li').forEach((li, i) => {
+    li.style.transitionDelay = (i * 0.06) + 's';
+    li.classList.add('anim-fade');
+    fadeObserver.observe(li);
+  });
+});
+
+/* ═══════════════════════════════════════
+   KEYBOARD — close drawer on Escape
+═══════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') {
+    const drawer = document.getElementById('nbDrawer');
+    if(drawer.classList.contains('open')) toggleMenu();
+  }
+});
+
+/* ═══════════════════════════════════════
+   SMOOTH ANCHOR SCROLL with offset for navbar
+═══════════════════════════════════════ */
+document.querySelectorAll('a[href^="#bab-"]').forEach(link => {
+  link.addEventListener('click', function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if(!target) return;
+    e.preventDefault();
+    const offset = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--nb-h')) || 58;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+/* ═══════════════════════════════════════
+   SERVICE WORKER — auto-update + offline
+═══════════════════════════════════════ */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+
+      // Check for updates every 60 seconds while app is open
+      setInterval(() => reg.update(), 60000);
+
+      // Detect a new service worker waiting to activate
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+            showUpdateToast(newWorker);
+          }
+        });
+      });
+
+    }).catch(() => {});
+
+    // Listen for the SW telling us to reload (after skipWaiting)
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
+  });
+}
+
+function showUpdateToast(worker){
+  const toast = document.getElementById('updateToast');
+  if(!toast) return;
+  toast.classList.add('show');
+  document.getElementById('updateBtn').onclick = () => {
+    toast.classList.remove('show');
+    worker.postMessage({ type: 'SKIP_WAITING' });
+  };
+  // Auto-update after 8 seconds if user ignores it
+  setTimeout(() => {
+    if(toast.classList.contains('show')){
+      toast.classList.remove('show');
+      worker.postMessage({ type: 'SKIP_WAITING' });
+    }
+  }, 8000);
+}
+
+/* ═══════════════════════════════════════
+   SPLASH SCREEN — hide after 3 seconds
+═══════════════════════════════════════ */
+(function(){
+  const splash = document.getElementById('splashScreen');
+  if(!splash) return;
+
+  function hideSplash(){
+    splash.classList.add('hide');
+    // Remove from DOM after transition
+    setTimeout(() => splash.remove(), 600);
+  }
+
+  // Hide after exactly 3 seconds
+  setTimeout(hideSplash, 3000);
+
+  // Also hide immediately if user taps (mobile friendliness)
+  splash.addEventListener('click', hideSplash);
+})();
+
+/* ═══════════════════════════════════════
+   ANDROID BACK BUTTON — close drawer first
+═══════════════════════════════════════ */
+window.addEventListener('popstate', () => {
+  const drawer = document.getElementById('nbDrawer');
+  if(drawer.classList.contains('open')){
+    toggleMenu();
+    history.pushState(null, '', location.href);
+  }
+});
+history.pushState(null, '', location.href);
+</script>
+
+</body>
+</html>

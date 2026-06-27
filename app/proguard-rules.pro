@@ -1,0 +1,3 @@
+-keep class com.jiilquran.husn_ada.** { *; }
+-keepattributes JavascriptInterface
+-keepattributes *Annotation*
