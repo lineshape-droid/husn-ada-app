@@ -32,16 +32,22 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease --no-daemon
 
-      - name: Sign APK with apksigner (v1 + v2 + v3)
+      - name: Sign APK — zipalign then apksigner
         run: |
-          # Decode keystore
           echo "${{ secrets.SIGNING_KEY }}" | base64 -d > /tmp/keystore.jks
 
-          # Find apksigner from Android SDK
-          APKSIGNER=$(find $ANDROID_HOME/build-tools -name "apksigner" | sort -V | tail -1)
-          echo "Using apksigner: $APKSIGNER"
+          BUILD_TOOLS=$(ls $ANDROID_HOME/build-tools | sort -V | tail -1)
+          ZIPALIGN="$ANDROID_HOME/build-tools/$BUILD_TOOLS/zipalign"
+          APKSIGNER="$ANDROID_HOME/build-tools/$BUILD_TOOLS/apksigner"
+          echo "Using build-tools: $BUILD_TOOLS"
 
-          # Sign with v1 + v2 + v3 (works on ALL Android versions 5.0+)
+          UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
+          ALIGNED="/tmp/app-aligned.apk"
+          SIGNED="app/build/outputs/apk/release/husn-ada-signed.apk"
+
+          $ZIPALIGN -v -p 4 "$UNSIGNED" "$ALIGNED"
+          echo "zipalign OK"
+
           $APKSIGNER sign \
             --ks /tmp/keystore.jks \
             --ks-pass "pass:${{ secrets.KEY_STORE_PASSWORD }}" \
@@ -50,18 +56,15 @@ jobs:
             --v1-signing-enabled true \
             --v2-signing-enabled true \
             --v3-signing-enabled true \
-            --out app/build/outputs/apk/release/app-release-signed.apk \
-            app/build/outputs/apk/release/app-release-unsigned.apk
+            --out "$SIGNED" "$ALIGNED"
+          echo "apksigner OK"
 
-          echo "✅ Signed APK:"
-          ls -lh app/build/outputs/apk/release/app-release-signed.apk
-
-          # Verify
-          $APKSIGNER verify --verbose app/build/outputs/apk/release/app-release-signed.apk
+          $APKSIGNER verify --verbose "$SIGNED"
+          ls -lh "$SIGNED"
 
       - name: Upload SIGNED APK
         uses: actions/upload-artifact@v4
         with:
           name: husn-ada-SIGNED
-          path: app/build/outputs/apk/release/app-release-signed.apk
+          path: app/build/outputs/apk/release/husn-ada-signed.apk
           retention-days: 90
