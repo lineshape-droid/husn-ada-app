@@ -28,22 +28,36 @@ jobs:
           curl -fL -o gradlew https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradlew
           chmod +x gradlew
           printf 'distributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.2-bin.zip\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n' > gradle/wrapper/gradle-wrapper.properties
-          cat gradle/wrapper/gradle-wrapper.properties
 
       - name: Build Release APK
         run: ./gradlew assembleRelease --no-daemon
 
-      - name: Sign APK with jarsigner
+      - name: Sign APK with apksigner (v1 + v2 + v3)
         run: |
+          # Decode keystore
           echo "${{ secrets.SIGNING_KEY }}" | base64 -d > /tmp/keystore.jks
-          jarsigner -verbose \
-            -keystore /tmp/keystore.jks \
-            -storepass "${{ secrets.KEY_STORE_PASSWORD }}" \
-            -keypass "${{ secrets.KEY_PASSWORD }}" \
-            -signedjar app/build/outputs/apk/release/app-release-signed.apk \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
-            "${{ secrets.KEY_ALIAS }}"
-          ls -lh app/build/outputs/apk/release/
+
+          # Find apksigner from Android SDK
+          APKSIGNER=$(find $ANDROID_HOME/build-tools -name "apksigner" | sort -V | tail -1)
+          echo "Using apksigner: $APKSIGNER"
+
+          # Sign with v1 + v2 + v3 (works on ALL Android versions 5.0+)
+          $APKSIGNER sign \
+            --ks /tmp/keystore.jks \
+            --ks-pass "pass:${{ secrets.KEY_STORE_PASSWORD }}" \
+            --ks-key-alias "${{ secrets.KEY_ALIAS }}" \
+            --key-pass "pass:${{ secrets.KEY_PASSWORD }}" \
+            --v1-signing-enabled true \
+            --v2-signing-enabled true \
+            --v3-signing-enabled true \
+            --out app/build/outputs/apk/release/app-release-signed.apk \
+            app/build/outputs/apk/release/app-release-unsigned.apk
+
+          echo "✅ Signed APK:"
+          ls -lh app/build/outputs/apk/release/app-release-signed.apk
+
+          # Verify
+          $APKSIGNER verify --verbose app/build/outputs/apk/release/app-release-signed.apk
 
       - name: Upload SIGNED APK
         uses: actions/upload-artifact@v4
