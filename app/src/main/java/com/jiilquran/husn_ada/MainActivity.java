@@ -25,7 +25,6 @@ public class MainActivity extends Activity {
 
         webView = findViewById(R.id.webView);
 
-        // ── WebView settings ───────────────────────────────────
         WebSettings s = webView.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
@@ -45,17 +44,15 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode,
                     String description, String failingUrl) {
-                // If remote fails fall back to local bundled version
                 if (failingUrl != null && failingUrl.startsWith("https://")) {
                     view.loadUrl(LOCAL_URL);
                     Toast.makeText(MainActivity.this,
-                        "آفلائن موڈ — لوکل ورژن لوڈ ہو رہی ہے",
+                        "آفلائن موڈ — لوکل ورژن",
                         Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        // Load remote if online (gets latest updates), else local
         if (isOnline()) {
             webView.loadUrl(REMOTE_URL);
         } else {
@@ -70,7 +67,6 @@ public class MainActivity extends Activity {
         return ni != null && ni.isConnected();
     }
 
-    // Handle back button inside WebView
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
@@ -81,14 +77,8 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        webView.onResume();
-    }
+    protected void onResume() { super.onResume(); webView.onResume(); }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        webView.onPause();
-    }
+    protected void onPause() { super.onPause(); webView.onPause(); }
 }
