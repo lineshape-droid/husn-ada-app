@@ -30,7 +30,7 @@ jobs:
           cat > gradle/wrapper/gradle-wrapper.properties << 'EOF'
           distributionBase=GRADLE_USER_HOME
           distributionPath=wrapper/dists
-          distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
+          distributionUrl=https\\://services.gradle.org/distributions/gradle-8.2-bin.zip
           zipStoreBase=GRADLE_USER_HOME
           zipStorePath=wrapper/dists
           EOF
@@ -38,9 +38,22 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease --no-daemon
 
-      - name: Upload APK
+      - name: Sign APK with jarsigner
+        run: |
+          echo "${{ secrets.SIGNING_KEY }}" | base64 -d > /tmp/keystore.jks
+          jarsigner -verbose \
+            -keystore /tmp/keystore.jks \
+            -storepass "${{ secrets.KEY_STORE_PASSWORD }}" \
+            -keypass "${{ secrets.KEY_PASSWORD }}" \
+            -signedjar app/build/outputs/apk/release/app-release-signed.apk \
+            app/build/outputs/apk/release/app-release-unsigned.apk \
+            "${{ secrets.KEY_ALIAS }}"
+          echo "Signed APK size:"
+          ls -lh app/build/outputs/apk/release/app-release-signed.apk
+
+      - name: Upload SIGNED APK
         uses: actions/upload-artifact@v4
         with:
-          name: husn-ada-apk
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          name: husn-ada-SIGNED
+          path: app/build/outputs/apk/release/app-release-signed.apk
           retention-days: 90
